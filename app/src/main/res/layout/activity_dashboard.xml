@@ -7,12 +7,148 @@
     android:background="@android:color/white"
     tools:context=".DashboardActivity">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/IV_profilephoto"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:riv_oval="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
 
+        <LinearLayout
+            android:id="@+id/profileimg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/et_background"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/IV_profilephoto"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/gexlogo"
+                app:riv_oval="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="monospace"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:text="Rushikesh Shingan"
+                android:textColor="@android:color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/db_line1"
+            android:layout_below="@+id/profileimg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CV_qr"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="@android:color/holo_blue_light"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="10dp"
+            app:cardUseCompatPadding="true">
+            <TextView
+                android:id="@+id/TV_qr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="QR"
+                android:background="@drawable/dashboarditem"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"/>
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CV_policy"
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                app:cardBackgroundColor="@android:color/holo_blue_light"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="10dp"
+                app:cardUseCompatPadding="true">
+                <TextView
+                    android:id="@+id/TV_policy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Policy"
+                    android:background="@drawable/dashboarditem"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"/>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/db_line2"
+            android:layout_below="@+id/db_line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CV_user"
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                app:cardBackgroundColor="@android:color/holo_blue_light"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="10dp"
+                app:cardUseCompatPadding="true">
+                <TextView
+                    android:id="@+id/TV_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Users"
+                    android:background="@drawable/dashboarditem"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CV_myprofile"
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                app:cardBackgroundColor="@android:color/holo_blue_light"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="10dp"
+                app:cardUseCompatPadding="true">
+                <TextView
+                    android:id="@+id/TV_myprofile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="My Profile"
+                    android:background="@drawable/dashboarditem"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"/>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
