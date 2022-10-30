@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -34,6 +35,21 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        tv_policy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this,Policy.class);
+                startActivity(intent);
+            }
+        });
+
+        tv_users.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent useractivity = new Intent(DashboardActivity.this,User_activity.class);
+                startActivity(useractivity);
+            }
+        });
 
 
     }
