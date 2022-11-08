@@ -30,8 +30,9 @@ public class DashboardActivity extends AppCompatActivity {
         tv_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDialog.setContentView(R.layout.qr_popup);
-                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                /*mDialog.setContentView(R.layout.qr_popup);
+                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));*/
+
             }
         });
 
@@ -48,6 +49,14 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent useractivity = new Intent(DashboardActivity.this,User_activity.class);
                 startActivity(useractivity);
+            }
+        });
+
+        tv_myprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, MyProfileActivity.class);
+                startActivity(intent);
             }
         });
 

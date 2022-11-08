@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "797992434908",
+    "project_id": "gex-emi-c0776",
+    "storage_bucket": "gex-emi-c0776.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797992434908:android:3e4f5abfa0c44b97e74819",
+        "android_client_info": {
+          "package_name": "com.example.gexemi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797992434908-39g5mesufsi0k5r914cjg3udlsdd9iq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gexemi",
+            "certificate_hash": "ff6a70bb5def3951e2bf6fc79587dbc9f3e6c6d2"
+          }
+        },
+        {
+          "client_id": "797992434908-68a60vg9h4do7rtkom2nma4cqpl1sar0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkWI-g79MV_xYj6fw9vSwP9-oFIBXJ13A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797992434908-68a60vg9h4do7rtkom2nma4cqpl1sar0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

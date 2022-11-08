@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="30dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    tools:context=".MoreDeatilsActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="User Name : "
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif"
+        android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rushikesh "
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="User Code : "
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/usercode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100001 "
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Vendor Name : "
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/vendorname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GoElectronix Pvt Ltd "
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Mobile No:"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/mobileno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1234567890 "
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="IMEI No:"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/imei_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ABC01839ERI "
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Registration Date:"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/register_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="08-09-2022"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Unlock Code:"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/unlock_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0001"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:visibility="gone"
+            android:id="@+id/lockuser"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Lock User"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/lockbtn"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/unlockuser"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="unlock User"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/unlockbtn"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>
