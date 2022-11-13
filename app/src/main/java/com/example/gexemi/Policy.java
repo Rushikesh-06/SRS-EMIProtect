@@ -11,7 +11,7 @@ import com.google.android.material.tabs.TabLayout;
 public class Policy extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 pager2;
-    FragmentAdapter adapter;
+    PolicyFragmentAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +19,8 @@ public class Policy extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tab_layout);
         pager2 = findViewById(R.id.view_pager2);
-
         FragmentManager fm = getSupportFragmentManager();
-        adapter = new FragmentAdapter(fm, getLifecycle());
+        adapter = new PolicyFragmentAdapter(fm, getLifecycle());
         pager2.setAdapter(adapter);
 
         tabLayout.addTab(tabLayout.newTab().setText("Balance Policies"));

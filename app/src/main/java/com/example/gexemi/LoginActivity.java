@@ -2,13 +2,25 @@ package com.example.gexemi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -16,6 +28,11 @@ public class LoginActivity extends AppCompatActivity {
     ImageView password_icon;
     Button btn_login;
     private boolean passwordshowing = false;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
+    String login_api = "http://goelectronix.in/api/app/VendorLogin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         password_icon = findViewById(R.id.password_icon);
         btn_login = findViewById(R.id.btn_signin);
 
+        preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
+        editor = preferences.edit();
 
         password_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,12 +62,82 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+                btn_login.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Login();
+                    }
+                });
+
+
+
+    }
+
+
+
+    private void Login() {
+
+        ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+        dialog.setMessage("Please Wait ...");
+        dialog.setCancelable(false);
+        dialog.show();
+
+        JSONObject params = new JSONObject();
+        //get value from local database from login API
+        try {
+            params.put("EmailID",username.getText().toString());
+            params.put("Password",password.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, login_api, params, new Response.Listener<JSONObject>() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+            public void onResponse(JSONObject response) {
+                dialog.dismiss();
+                try {
+                    if(response.getBoolean("success")== true) {
+
+
+                        String Vendorcode = response.getString("vendorCode");
+                        Integer VendorID = response.getInt("vendorID");
+                        String VendorUserID = response.getString("vendorUserID");
+                        String VendorName = response.getString("vendorName");
+                        String VendorMobileNumber = response.getString("vendorMobileNumber");
+                        String ShopName = response.getString("shopName");
+                        String EmailId = response.getString("emailID");
+
+                        editor.putString("Vendorcode",Vendorcode);
+                        editor.putString("VendorID",VendorID.toString());
+                        editor.putString("VendorUserID",VendorUserID);
+                        editor.putString("VendorName",VendorName);
+                        editor.putString("VendorMobileNumber",VendorMobileNumber);
+                        editor.putString("ShopName",ShopName);
+                        editor.putString("EmailId",EmailId);
+
+                        editor.commit();
+
+                        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+
+
+                    }else {
+                        String error = response.getString("message");
+                        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
+                Toast.makeText(LoginActivity.this, "Login Failed...Check MailID and Password", Toast.LENGTH_SHORT).show();
             }
         });
 
+        Volley.newRequestQueue(LoginActivity.this).add(objectRequest);
+
     }
+
 }

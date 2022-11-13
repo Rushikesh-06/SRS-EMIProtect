@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/drawable/dashboarditem.xml" value="0.219" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/drawable/et_background.xml" value="0.219" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/drawable/gradientbackground.xml" value="0.241" />
+        <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/drawable/gradientbackground_moredetails.xml" value="0.243" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/drawable/lockbtn.xml" value="0.241" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/drawable/unlockbtn.xml" value="0.241" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/activity_dashboard.xml" value="0.32135416666666666" />
@@ -19,11 +20,14 @@
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/fragment_all_user_.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/fragment_assignpolicy_fragment.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/fragment_balancepolicy_fragment.xml" value="0.3072916666666667" />
+        <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/fragment_balancepolicy_fragment2.xml" value="0.309375" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/fragment_lock_user_.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/fragment_uninstallpolicy_fragment.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/fragment_unistall_user_.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/policy_item.xml" value="0.3203125" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/qr_popup.xml" value="0.3203125" />
+        <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/user_item.xml" value="0.309375" />
+        <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/xml/network_security_config.xml" value="0.14583333333333334" />
       </map>
     </option>
   </component>

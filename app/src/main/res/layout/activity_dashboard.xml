@@ -35,10 +35,10 @@
                 app:riv_oval="true" />
 
             <TextView
+                android:id="@+id/dashboard_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:fontFamily="monospace"
                 android:maxLines="2"
                 android:padding="5dp"
                 android:text="Rushikesh Shingan"

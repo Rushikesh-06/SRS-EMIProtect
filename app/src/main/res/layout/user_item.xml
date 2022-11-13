@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:text="Policy Number :"
+                    android:text="User Name :"
                     android:textStyle="bold"
                     android:textSize="18dp"
                     android:layout_marginTop="5dp"
@@ -39,10 +39,10 @@
                     >
                 </TextView>
                 <TextView
-                    android:id="@+id/policy_number"
+                    android:id="@+id/item_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ABC00001"
+                    android:text="Rushikesh"
                     android:textSize="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:text="Vendor Name :"
+                    android:text="Customer ID :"
                     android:textStyle="bold"
                     android:textSize="18dp"
                     android:layout_marginTop="5dp"
@@ -66,10 +66,10 @@
                     >
                 </TextView>
                 <TextView
-                    android:id="@+id/vendor_name"
+                    android:id="@+id/item_custid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Geolectronix Tech Pvt Ltd"
+                    android:text="001"
                     android:textSize="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:text="Shop Name :"
+                    android:text="Mobile No :"
                     android:textStyle="bold"
                     android:textSize="18dp"
                     android:layout_marginTop="5dp"
@@ -93,10 +93,10 @@
                     >
                 </TextView>
                 <TextView
-                    android:id="@+id/shop_name"
+                    android:id="@+id/item_phoneno"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GOEX Shop"
+                    android:text="1092837465"
                     android:textSize="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
@@ -105,7 +105,7 @@
             </LinearLayout>
 
             <TextView
-                android:visibility="gone"
+                android:id="@+id/item_moredetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="More Details"

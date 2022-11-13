@@ -7,8 +7,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class FragmentAdapter extends FragmentStateAdapter {
-    public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+import com.example.gexemi.Fragment.Assignpolicy_fragment;
+import com.example.gexemi.Fragment.Balancepolicy_fragment;
+import com.example.gexemi.Fragment.Uninstallpolicy_fragment;
+
+public class PolicyFragmentAdapter extends FragmentStateAdapter {
+    public PolicyFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 
@@ -18,13 +22,16 @@ public class FragmentAdapter extends FragmentStateAdapter {
 
         switch (position)
         {
+            case 0:
+                return new Balancepolicy_fragment();
             case 1 :
                 return new Assignpolicy_fragment();
             case 2 :
                 return new Uninstallpolicy_fragment();
+            default:
+                return null;
         }
 
-        return new Balancepolicy_fragment();
     }
 
     @Override

@@ -23,6 +23,7 @@
         android:src="@drawable/gexlogo"/>
 
     <TextView
+        android:id="@+id/profile_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -49,6 +50,7 @@
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/profile_shopname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Morya Mobiles "
@@ -59,6 +61,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,6 +102,7 @@
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/profile_phoneno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1234567890 "
@@ -128,8 +132,8 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/emailid"
-                android:layout_width="wrap_content"
+                android:id="@+id/profile_mailid"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
@@ -157,6 +161,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -176,13 +181,17 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/profile_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
                 android:text="Bhandup"
                 android:textSize="15dp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:layout_margin="10dp"/>
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="40dp"
@@ -199,6 +208,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -218,6 +228,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/profile_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -266,6 +277,7 @@
 
 
             <TextView
+                android:id="@+id/profile_pincode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -282,6 +294,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -323,6 +336,7 @@
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/profile_pancardno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ABCDE0000F "
@@ -347,6 +361,7 @@
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/profile_adharcardno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="123456789012 "
@@ -371,6 +386,7 @@
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/profile_gstno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ABC123DE "
@@ -396,6 +412,7 @@
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/profile_vendorcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="100001 "
@@ -425,6 +442,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/profile_cust_contactno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -456,6 +474,51 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:text="Display Payment No :"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/profile_cust_paymentno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
+                android:text="0987654321"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:adjustViewBounds="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_edit"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
             android:text="Display Name :"
             android:textSize="15dp"
             android:textStyle="bold"
@@ -468,6 +531,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/profile_displayname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -475,11 +539,13 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif"
+                android:layout_toLeftOf="@+id/editdisplayname"
                 android:text="Rushikesh Shingan"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
             <ImageView
+                android:id="@+id/editdisplayname"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
@@ -492,6 +558,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -507,6 +574,7 @@
             android:layout_margin="10dp"/>
 
         <ImageView
+            android:id="@+id/profile_uploadimage"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"

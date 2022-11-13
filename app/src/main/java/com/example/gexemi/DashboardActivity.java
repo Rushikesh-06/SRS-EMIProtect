@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,8 +14,10 @@ import android.widget.TextView;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    TextView tv_qr, tv_policy,tv_users, tv_myprofile;
+    TextView tv_qr, tv_policy,tv_users, tv_myprofile,dashboard_username;
     Dialog mDialog;
+
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +28,18 @@ public class DashboardActivity extends AppCompatActivity {
         tv_policy = findViewById(R.id.TV_policy);
         tv_users = findViewById(R.id.TV_user);
         tv_myprofile = findViewById(R.id.TV_myprofile);
+        dashboard_username = findViewById(R.id.dashboard_username);
         mDialog = new Dialog(this);
+
+        preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
+        dashboard_username.setText(preferences.getString("VendorName",""));
 
         tv_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*mDialog.setContentView(R.layout.qr_popup);
-                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));*/
-
+                mDialog.setContentView(R.layout.qr_popup);
+                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                mDialog.show();
             }
         });
 

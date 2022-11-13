@@ -1,6 +1,7 @@
-package com.example.gexemi;
+package com.example.gexemi.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.gexemi.PolicyClass;
+import com.example.gexemi.R;
 
 import java.util.List;
 
@@ -34,7 +38,11 @@ public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdap
         PolicyClass policy = policylist.get(position);
         holder.policy_number.setText(policy.getPolicyNumber());
         holder.vendor_name.setText(policy.getVendorName());
-        holder.vendor_code.setText(policy.getVendorCode());
+        holder.shop_name.setText(policy.getShop_name());
+
+        Log.e("HolderData",policy.getPolicyNumber());
+        Log.e("HolderData",policy.getShop_name());
+        Log.e("HolderData",policy.getVendorName());
 
     }
 
@@ -45,14 +53,14 @@ public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdap
 
     public class PolicyHolder extends RecyclerView.ViewHolder {
 
-        TextView policy_number,vendor_name,vendor_code;
+        TextView policy_number,vendor_name,shop_name;
 
         public PolicyHolder(@NonNull View itemView) {
             super(itemView);
 
             policy_number = itemView.findViewById(R.id.policy_number);
-            vendor_code = itemView.findViewById(R.id.vendor_code);
             vendor_name = itemView.findViewById(R.id.vendor_name);
+            shop_name = itemView.findViewById(R.id.shop_name);
         }
     }
 }
