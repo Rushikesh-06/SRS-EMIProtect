@@ -120,7 +120,7 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="Email ID"
+            android:text="Email ID :"
             android:textSize="15dp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -132,23 +132,40 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/profile_mailid"
+                android:id="@+id/TV_profile_mailid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_toLeftOf="@+id/editicon"
+                android:layout_toLeftOf="@+id/edit_email"
                 android:fontFamily="sans-serif"
                 android:text="Rushi@gmail.com "
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/ET_profile_mailid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toLeftOf="@+id/edit_email"
+                android:fontFamily="sans-serif"
+                android:inputType="textEmailAddress"
+                android:hint="Enter new Mail ID"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
             <ImageView
-                android:id="@+id/editicon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/edit_email"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
@@ -430,7 +447,7 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="Cust Contact No :"
+            android:text="Display Contact No :"
             android:textSize="15dp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -442,27 +459,47 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/profile_cust_contactno"
-                android:layout_width="wrap_content"
+                android:id="@+id/TV_profile_display_contactno"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_toLeftOf="@+id/edit_displaycontactno"
                 android:fontFamily="sans-serif"
-                android:text="1234567890"
+                android:text="Display Contact No"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/ET_profile_display_contactno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toLeftOf="@+id/edit_displaycontactno"
+                android:fontFamily="sans-serif"
+                android:hint="Enter Contact No"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/edit_displaycontactno"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
                 android:adjustViewBounds="true"
                 android:padding="10dp"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -486,27 +523,47 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/profile_cust_paymentno"
-                android:layout_width="wrap_content"
+                android:id="@+id/TV_profile_cust_paymentno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toLeftOf="@+id/edit_displaypaymentno"
+                android:fontFamily="sans-serif"
+                android:text="Payment No"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/ET_profile_cust_paymentno"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif"
-                android:text="0987654321"
+                android:hint="Enter Payment No"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:layout_toLeftOf="@+id/edit_displaypaymentno"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
+
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/edit_displaypaymentno"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
                 android:adjustViewBounds="true"
                 android:padding="10dp"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -515,6 +572,7 @@
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="120dp"
@@ -531,23 +589,39 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/profile_displayname"
-                android:layout_width="wrap_content"
+                android:id="@+id/TV_profile_displayname"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_toLeftOf="@+id/edit_displayname"
                 android:fontFamily="sans-serif"
-                android:layout_toLeftOf="@+id/editdisplayname"
-                android:text="Rushikesh Shingan"
+                android:text="Display Name"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/ET_profile_displayname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toLeftOf="@+id/edit_displayname"
+                android:fontFamily="sans-serif"
+                android:hint="Enter Display Name"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
             <ImageView
-                android:id="@+id/editdisplayname"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/edit_displayname"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
@@ -585,6 +659,22 @@
             android:src="@drawable/ic_baseline_file_upload" />
 
     </LinearLayout>
+
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/btn_updatevendor"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:background="@drawable/gradientbackground_moredetails"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif"
+        android:layout_margin="20dp"/>
+
 
 
 
