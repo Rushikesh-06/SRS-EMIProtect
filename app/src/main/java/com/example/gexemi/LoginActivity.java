@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageView password_icon;
     Button btn_login;
     private boolean passwordshowing = false;
+    SessionManage session;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -46,6 +47,12 @@ public class LoginActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
         editor = preferences.edit();
+
+        session = new SessionManage(LoginActivity.this);
+        if (session.getLoginStatus()) {
+            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+            finish();
+        }
 
         password_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     if(response.getBoolean("success")== true) {
 
+                        session.addLoginStatus(true);
 
                         String Vendorcode = response.getString("vendorCode");
                         Integer VendorID = response.getInt("vendorID");

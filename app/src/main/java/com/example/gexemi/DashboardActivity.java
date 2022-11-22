@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    TextView tv_qr, tv_policy,tv_users, tv_myprofile,dashboard_username;
+    TextView tv_qr, tv_policy,tv_users, tv_myprofile,dashboard_username,dashboard_vendorID;
     Dialog mDialog;
 
     SharedPreferences preferences;
@@ -29,10 +29,12 @@ public class DashboardActivity extends AppCompatActivity {
         tv_users = findViewById(R.id.TV_user);
         tv_myprofile = findViewById(R.id.TV_myprofile);
         dashboard_username = findViewById(R.id.dashboard_username);
+        dashboard_vendorID = findViewById(R.id.dashboard_vendorID);
         mDialog = new Dialog(this);
 
         preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
         dashboard_username.setText(preferences.getString("VendorName",""));
+        dashboard_vendorID.setText("VendorID : "+preferences.getString("VendorID",""));
 
         tv_qr.setOnClickListener(new View.OnClickListener() {
             @Override

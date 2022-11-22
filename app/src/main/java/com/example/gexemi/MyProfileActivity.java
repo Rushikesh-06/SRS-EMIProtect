@@ -3,6 +3,7 @@ package com.example.gexemi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -42,10 +43,23 @@ public class MyProfileActivity extends AppCompatActivity {
     ProgressDialog dialog ;
     String response_tvmailid , response_tvdisplaycontactno,response_tvdispplaypaymentno,response_tvdisplayname;
 
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
+    ProgressDialog mdialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
+
+        mdialog = new ProgressDialog(MyProfileActivity.this);
+        mdialog.setMessage("Please Wait");
+        mdialog.setCancelable(false);
+        mdialog.show();
+
+        preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
+        editor = preferences.edit();
 
         edit_displaycontactno = findViewById(R.id.edit_displaycontactno);
         edit_email = findViewById(R.id.edit_email);
@@ -218,6 +232,8 @@ public class MyProfileActivity extends AppCompatActivity {
                 try {
                     if(response.getBoolean("success")== true) {
 
+                        mdialog.dismiss();
+
                         response_tvmailid = response.getString("emailID");
                         response_tvdisplaycontactno = response.getString("displayContactNumber");
                         response_tvdispplaypaymentno = response.getString("paymentNumber");
@@ -239,6 +255,7 @@ public class MyProfileActivity extends AppCompatActivity {
                         TV_profile_cust_paymentno.setText(response.getString("paymentNumber"));
 
                     }else {
+                        mdialog.dismiss();
                         Toast.makeText(MyProfileActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
@@ -252,7 +269,7 @@ public class MyProfileActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                mdialog.dismiss();
                 Log.e("error",error.getMessage());
             }
         });

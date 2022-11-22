@@ -1,6 +1,8 @@
 package com.example.gexemi.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gexemi.MoreDeatilsActivity;
 import com.example.gexemi.R;
 import com.example.gexemi.UserClass;
 
@@ -39,6 +42,23 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
         holder.uninstall_custid.setText(""+user.getCustid());
         holder.uninstall_phoneno.setText(user.getPhoneno());
 
+        holder.item_moredetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MoreDeatilsActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("Username",user.getUsername());
+                bundle.putString("CustID",user.getCustid().toString());
+                bundle.putString("Phoneno",user.getPhoneno());
+                bundle.putString("Serialno",user.getSerialNo());
+
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -49,7 +69,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
 
     public class UninstalluserHolder extends RecyclerView.ViewHolder {
 
-        TextView uninstall_username,uninstall_custid,uninstall_phoneno;
+        TextView uninstall_username,uninstall_custid,uninstall_phoneno,item_moredetails;
 
 
         public UninstalluserHolder(@NonNull View itemView) {
@@ -58,6 +78,8 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
             uninstall_username = itemView.findViewById(R.id.item_username);
             uninstall_custid = itemView.findViewById(R.id.item_custid);
             uninstall_phoneno = itemView.findViewById(R.id.item_phoneno);
+            item_moredetails = itemView.findViewById(R.id.item_moredetails);
+
         }
     }
 }

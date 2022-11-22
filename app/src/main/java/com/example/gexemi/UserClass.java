@@ -5,11 +5,13 @@ public class UserClass {
     String Username;
     Integer Custid;
     String Phoneno;
+    String SerialNo;
 
-    public UserClass(String username, Integer custid, String phoneno) {
+    public UserClass(String username, Integer custid, String phoneno, String serialNo) {
         Username = username;
         Custid = custid;
         Phoneno = phoneno;
+        SerialNo = serialNo;
     }
 
     public String getUsername() {
@@ -35,4 +37,13 @@ public class UserClass {
     public void setPhoneno(String phoneno) {
         Phoneno = phoneno;
     }
+
+    public String getSerialNo() {
+        return SerialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        SerialNo = serialNo;
+    }
 }
+

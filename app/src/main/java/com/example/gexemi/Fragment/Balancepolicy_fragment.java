@@ -31,7 +31,8 @@ import java.util.List;
 
 public class Balancepolicy_fragment extends Fragment {
 
-  String balanceapi_url = "http://goelectronix.in/api/app/VendorPolicies";
+    private   String TAG = getClass().getSimpleName();
+    String balanceapi_url = "http://goelectronix.in/api/app/VendorPolicies";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +57,7 @@ public class Balancepolicy_fragment extends Fragment {
         JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, balanceapi_url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                Log.e(TAG, "onResponse: "+response );
                 try {
                     if(response.getBoolean("success")== true) {
 
@@ -75,6 +76,8 @@ public class Balancepolicy_fragment extends Fragment {
 
                             policies.add(new PolicyClass(policynumber,vendorname,shop_name,policyID));
                         }
+                        recyclerView.setAdapter(new BalancePolicyAdapter(getContext(),policies));
+
 
                     }else {
                         Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -96,7 +99,6 @@ public class Balancepolicy_fragment extends Fragment {
         });
 
         Volley.newRequestQueue(getContext()).add(objectRequest);
-        recyclerView.setAdapter(new BalancePolicyAdapter(getContext(),policies));
 
         // Inflate the layout for this fragment
         return view;

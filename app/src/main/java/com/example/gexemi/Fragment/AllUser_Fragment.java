@@ -71,8 +71,9 @@ public class AllUser_Fragment extends Fragment {
                             String result_username = object.getString("name");
                             Integer result_custid = object.getInt("customerID");
                             String result_phoneno = object.getString("mobileNumber");
+                            String serialno = object.getString("serialNumber");
 
-                            users.add(new UserClass(result_username,result_custid,result_phoneno));
+                            users.add(new UserClass(result_username,result_custid,result_phoneno,serialno));
                         }
                         recyclerView.setAdapter(new AlluserAdapter(getContext(),users));
 

@@ -3,6 +3,7 @@ package com.example.gexemi.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,9 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
                 bundle.putString("Username",user.getUsername());
                 bundle.putString("CustID",user.getCustid().toString());
                 bundle.putString("Phoneno",user.getPhoneno());
+                bundle.putString("Serialno",user.getSerialNo());
+
+//                Log.e("serialno :" ,user.getSerialNo());
 
                 intent.putExtras(bundle);
                 context.startActivity(intent);
