@@ -3,6 +3,7 @@ package com.example.gexemi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -45,6 +46,7 @@ public class MyProfileActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    String mVendorCode;
 
     ProgressDialog mdialog;
 
@@ -60,6 +62,8 @@ public class MyProfileActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
         editor = preferences.edit();
+
+        mVendorCode = preferences.getString("Vendorcode","");
 
         edit_displaycontactno = findViewById(R.id.edit_displaycontactno);
         edit_email = findViewById(R.id.edit_email);
@@ -217,7 +221,7 @@ public class MyProfileActivity extends AppCompatActivity {
         JSONObject params = new JSONObject();
         //get value from local database from login API
         try {
-            params.put("VendorCode","MH7");
+            params.put("VendorCode",mVendorCode);
             params.put("VendorID",0);
         } catch (JSONException e) {
             e.printStackTrace();

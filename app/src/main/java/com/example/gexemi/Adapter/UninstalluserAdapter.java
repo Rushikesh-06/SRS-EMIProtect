@@ -30,7 +30,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
     @NonNull
     @Override
     public UninstalluserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.user_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.uninstalluser_item,parent,false);
         return new UninstalluserHolder(view);
     }
 
@@ -79,6 +79,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
             uninstall_custid = itemView.findViewById(R.id.item_custid);
             uninstall_phoneno = itemView.findViewById(R.id.item_phoneno);
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
+
 
         }
     }

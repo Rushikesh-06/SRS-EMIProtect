@@ -40,6 +40,13 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
         holder.lock_username.setText(user.getUsername());
         holder.lock_custid.setText(""+user.getCustid());
         holder.lock_phoneno.setText(user.getPhoneno());
+        String current_userstatus = user.getCust_status();
+
+        if (current_userstatus.equals("UNLOCKED")){
+            holder.userstatus.setBackgroundResource(R.drawable.unlockstatus);
+        }else if(current_userstatus.equals("LOCKED")){
+            holder.userstatus.setBackgroundResource(R.drawable.lockstatus);
+        }
 
         holder.item_moredetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,11 +59,15 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
                 bundle.putString("Phoneno",user.getPhoneno());
                 bundle.putString("Serialno",user.getSerialNo());
 
+//                Log.e("serialno :" ,user.getSerialNo());
+
                 intent.putExtras(bundle);
                 context.startActivity(intent);
 
             }
         });
+
+
     }
 
     @Override
@@ -66,7 +77,7 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
 
     public class LockuserHolder extends RecyclerView.ViewHolder {
 
-        TextView lock_username,lock_custid,lock_phoneno,item_moredetails;
+        TextView lock_username,lock_custid,lock_phoneno,item_moredetails,userstatus;
 
         public LockuserHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +86,7 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
             lock_custid = itemView.findViewById(R.id.item_custid);
             lock_phoneno = itemView.findViewById(R.id.item_phoneno);
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
+            userstatus = itemView.findViewById(R.id.userstatus);
 
         }
     }

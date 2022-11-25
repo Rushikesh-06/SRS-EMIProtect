@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 public class MoreDeatilsActivity extends AppCompatActivity {
 
+    private  String TAG = getClass().getSimpleName() ;
     TextView MD_username,MD_registerno,MD_currentphoneno,MD_mailID,MD_loandate,MD_emidate,MD_downpayment, MD_emiamount;
     TextView MD_emitenure, MD_financecompany,MD_deviceaname,MD_imeino,MD_currentstatus,MD_unlockcode,MD_deviceamount;
 
@@ -37,7 +38,8 @@ public class MoreDeatilsActivity extends AppCompatActivity {
 
     Integer userstatusID = 0;
 
-    Integer cust_currentstatus;
+    String cust_currentstatus;
+    String serialno;
     ProgressDialog mdialog;
 
     @Override
@@ -71,79 +73,9 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         btn_unlockuser = findViewById(R.id.btn_unlockuser);
         btn_uninstalluser = findViewById(R.id.Btn_uninstall);
 
-
-        cust_currentstatus =4;
-
-        //btn visibility
-        if (cust_currentstatus==3){
-            btn_lockuser.setVisibility(View.GONE);
-            btn_unlockuser.setVisibility(View.VISIBLE);
-        }else if (cust_currentstatus==4){
-            btn_unlockuser.setVisibility(View.GONE);
-            btn_lockuser.setVisibility(View.VISIBLE);
-        }
+        getCustDetails();
 
 
-        Bundle bundle = getIntent().getExtras();
-        String serialno = bundle.getString("Serialno");
-
-
-        JSONObject params = new JSONObject();
-
-        //get value from local database from login API
-        try {
-            params.put("SerialNumber",serialno);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, Cust_detailAPI, params, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-                    if(response.getBoolean("success")== true) {
-                        mdialog.dismiss();
-
-                        //get and set all the values from API
-                        MD_username.setText(response.getString("customerName"));
-                        MD_registerno.setText(response.getString("mobileNumber"));
-                        MD_mailID.setText(response.getString("emailID"));
-                        MD_deviceaname.setText(response.getString("mobileBrand"));
-                        MD_imeino.setText(response.getString("imeiNumber"));
-                        MD_downpayment.setText(response.getString("downPayment"));
-                        MD_emiamount.setText(response.getString("emiAmount"));
-                        MD_financecompany.setText(response.getString("financiarName"));
-                        MD_deviceamount.setText(response.getString("deviceAmount"));
-                        MD_emidate.setText(response.getString("emiDate"));
-                        MD_emitenure.setText(response.getString("emiTenure"));
-                        String photourl = response.getString("photoURL");
-                        Glide.with(MoreDeatilsActivity.this).load(photourl).into(MD_custphoto);
-
-                        IMEI_No = response.getString("imeiNumber");
-                        deviceID = response.getString("deviceID");
-
-                    }else {
-                        mdialog.dismiss();
-                        Toast.makeText(MoreDeatilsActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                Log.e("Data",response.toString());
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mdialog.dismiss();
-                Log.e("error",error.getMessage());
-            }
-        });
-
-        Volley.newRequestQueue(MoreDeatilsActivity.this).add(objectRequest);
 
 
 
@@ -173,6 +105,87 @@ public class MoreDeatilsActivity extends AppCompatActivity {
 
     }
 
+    private void getCustDetails() {
+        JSONObject params = new JSONObject();
+
+        Bundle bundle = getIntent().getExtras();
+        serialno = bundle.getString("Serialno");
+
+        //get value from local database from login API
+        try {
+            params.put("SerialNumber",serialno);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, Cust_detailAPI, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    if(response.getBoolean("success")== true) {
+                        mdialog.dismiss();
+
+                        //get and set all the values from API
+                        MD_username.setText(response.getString("customerName"));
+                        MD_registerno.setText(response.getString("mobileNumber"));
+                        MD_mailID.setText(response.getString("emailID"));
+                        MD_deviceaname.setText(response.getString("mobileBrand"));
+                        MD_imeino.setText(response.getString("imeiNumber"));
+                        MD_downpayment.setText(response.getString("downPayment"));
+                        MD_emiamount.setText(response.getString("emiAmount"));
+                        MD_financecompany.setText(response.getString("financiarName"));
+                        MD_deviceamount.setText(response.getString("deviceAmount"));
+                        MD_emidate.setText(response.getString("emiDate").split("T")[0]);
+                        MD_emitenure.setText(response.getString("emiTenure"));
+                        MD_currentstatus.setText(response.getString("customerStatus"));
+
+                        if (response.getString("customerStatus").equals("LOCKED")){
+                            btn_lockuser.setVisibility(View.GONE);
+                            btn_unlockuser.setVisibility(View.VISIBLE);
+                        }else if (response.getString("customerStatus").equals("UNLOCKED")){
+                            btn_lockuser.setVisibility(View.VISIBLE);
+                            btn_unlockuser.setVisibility(View.GONE);
+                        }else if (response.getString("customerStatus").equals("UNINSTALLED")) {
+                            btn_lockuser.setVisibility(View.GONE);
+                            btn_unlockuser.setVisibility(View.GONE);
+                            btn_uninstalluser.setVisibility(View.GONE);
+                        }
+                        String photourl = response.getString("photoURL");
+                        Glide.with(MoreDeatilsActivity.this).load(photourl).into(MD_custphoto);
+
+                        IMEI_No = response.getString("imeiNumber");
+                        deviceID = response.getString("deviceID");
+
+                    }else {
+                        mdialog.dismiss();
+                        Toast.makeText(MoreDeatilsActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Log.e("Data",response.toString());
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mdialog.dismiss();
+                Log.e("error",error.getMessage());
+            }
+        });
+
+
+        //btn visibility
+
+
+
+        Volley.newRequestQueue(MoreDeatilsActivity.this).add(objectRequest);
+
+    }
+
     private void useraction(int i) {
 
         JSONObject useraction_params = new JSONObject();
@@ -191,8 +204,12 @@ public class MoreDeatilsActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
 
+                Log.e(TAG, "onResponse: "+response );
                 try {
                     if(response.getBoolean("success")== true) {
+
+                        getCustDetails();
+
                         if (i==3){
                             btn_lockuser.setVisibility(View.GONE);
                             btn_unlockuser.setVisibility(View.VISIBLE);

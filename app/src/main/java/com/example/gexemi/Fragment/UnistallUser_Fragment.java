@@ -1,6 +1,8 @@
 package com.example.gexemi.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -51,17 +53,22 @@ public class UnistallUser_Fragment extends Fragment {
             }
         });*/
 
+        TextView no_record = view.findViewById(R.id.no_record);
+
         RecyclerView recyclerView =  view.findViewById(R.id.uninstalluser_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         List<UserClass> users =new ArrayList<>();
 
+        SharedPreferences preferences;
+        preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
+        String mVendorID = preferences.getString("VendorID","");
 
         JSONObject params = new JSONObject();
 
         //get value from local database from login API
         try {
-            params.put("VendorID",7);
-            params.put("CustomerStatus",0);
+            params.put("VendorID",Integer.parseInt(mVendorID));
+            params.put("CustomerStatus",2);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -82,8 +89,16 @@ public class UnistallUser_Fragment extends Fragment {
                             String result_phoneno = object.getString("mobileNumber");
                             String serialno = object.getString("serialNumber");
 
+                            String Cust_status = object.getString("customerStatus");
 
-                            users.add(new UserClass(result_username,result_custid,result_phoneno,serialno));
+                            users.add(new UserClass(result_username,result_custid,result_phoneno,serialno,Cust_status));
+                        }
+                        if (users.size() == 0) {
+                            no_record.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                        } else {
+                            no_record.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
                         }
                         recyclerView.setAdapter(new UninstalluserAdapter(getContext(),users));
 

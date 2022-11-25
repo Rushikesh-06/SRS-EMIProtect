@@ -108,6 +108,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/userstatus"
                     android:layout_width="25dp"
                     android:layout_height="25dp"

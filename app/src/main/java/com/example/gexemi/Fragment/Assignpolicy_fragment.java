@@ -1,5 +1,6 @@
 package com.example.gexemi.Fragment;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -41,15 +43,20 @@ public class Assignpolicy_fragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_assignpolicy_fragment, container, false);
 
+        TextView no_record = view.findViewById(R.id.no_record);
         RecyclerView assignrecycler =  view.findViewById(R.id.assign_recyclerview);
         assignrecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         List<PolicyClass> policies =new ArrayList<>();
+
+        SharedPreferences preferences;
+        preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
+        String mVendorID = preferences.getString("VendorID","");
 
         JSONObject params = new JSONObject();
 
         //get value from local database from login API
         try {
-            params.put("VendorID",7);
+            params.put("VendorID",Integer.parseInt(mVendorID));
             params.put("CustomerStatus",0);
             params.put("PolicyStatus",2);
         } catch (JSONException e) {
@@ -77,6 +84,13 @@ public class Assignpolicy_fragment extends Fragment {
                             String shop_name = "Assign Vendor";
 
                             policies.add(new PolicyClass(policynumber,vendorname,shop_name,policyID));
+                        }
+                        if (policies.size() == 0) {
+                            no_record.setVisibility(View.VISIBLE);
+                            assignrecycler.setVisibility(View.GONE);
+                        } else {
+                            no_record.setVisibility(View.GONE);
+                            assignrecycler.setVisibility(View.VISIBLE);
                         }
                         assignrecycler.setAdapter(new AssignpolicyAdapter(getContext(),policies));
 

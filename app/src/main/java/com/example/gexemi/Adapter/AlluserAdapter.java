@@ -43,6 +43,13 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
         holder.all_username.setText(user.getUsername());
         holder.all_custid.setText(""+user.getCustid());
         holder.all_phoneno.setText(user.getPhoneno());
+        String current_userstatus = user.getCust_status();
+
+        if (current_userstatus.equals("UNLOCKED")){
+            holder.userstatus.setBackgroundResource(R.drawable.unlockstatus);
+        }else if(current_userstatus.equals("LOCKED")){
+            holder.userstatus.setBackgroundResource(R.drawable.lockstatus);
+        }
 
         holder.item_moredetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +78,7 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
 
     public class AlluserHolder extends RecyclerView.ViewHolder {
 
-        TextView all_username,all_custid,all_phoneno,item_moredetails;
+        TextView all_username,all_custid,all_phoneno,item_moredetails,userstatus;
 
         public AlluserHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +87,7 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
             all_custid = itemView.findViewById(R.id.item_custid);
             all_phoneno = itemView.findViewById(R.id.item_phoneno);
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
+            userstatus = itemView.findViewById(R.id.userstatus);
 
         }
     }

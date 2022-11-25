@@ -6,13 +6,7 @@ public class UserClass {
     Integer Custid;
     String Phoneno;
     String SerialNo;
-
-    public UserClass(String username, Integer custid, String phoneno, String serialNo) {
-        Username = username;
-        Custid = custid;
-        Phoneno = phoneno;
-        SerialNo = serialNo;
-    }
+    String Cust_status;
 
     public String getUsername() {
         return Username;
@@ -45,5 +39,20 @@ public class UserClass {
     public void setSerialNo(String serialNo) {
         SerialNo = serialNo;
     }
-}
 
+    public String getCust_status() {
+        return Cust_status;
+    }
+
+    public void setCust_status(String cust_status) {
+        Cust_status = cust_status;
+    }
+
+    public UserClass(String username, Integer custid, String phoneno, String serialNo, String cust_status) {
+        Username = username;
+        Custid = custid;
+        Phoneno = phoneno;
+        SerialNo = serialNo;
+        Cust_status = cust_status;
+    }
+}
