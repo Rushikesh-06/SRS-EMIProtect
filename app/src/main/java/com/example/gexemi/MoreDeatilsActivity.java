@@ -28,7 +28,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
     TextView MD_emitenure, MD_financecompany,MD_deviceaname,MD_imeino,MD_currentstatus,MD_unlockcode,MD_deviceamount;
 
     ImageView MD_custphoto;
-    Button btn_lockuser,btn_unlockuser,btn_uninstalluser;
+    Button btn_lockuser,btn_unlockuser,btn_uninstalluser, btn_syncCust;
 
     String Cust_detailAPI = "http://goelectronix.in/api/app/CustomerDetails";
     String UserAction_API = "http://goelectronix.in/api/app/CustomerStatusSync";
@@ -41,6 +41,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
     String cust_currentstatus;
     String serialno;
     ProgressDialog mdialog;
+    private String syncapi =  "http://goelectronix.in/api/app/CustomerStatusSync";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +73,18 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         btn_lockuser = findViewById(R.id.btn_lockuser);
         btn_unlockuser = findViewById(R.id.btn_unlockuser);
         btn_uninstalluser = findViewById(R.id.Btn_uninstall);
+        btn_syncCust = findViewById(R.id.btn_syncCust);
 
         getCustDetails();
 
+        btn_syncCust.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                callsyncAPI();
+                
+            }
+        });
 
 
 
@@ -101,6 +110,52 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void callsyncAPI() {
+
+        JSONObject params = new JSONObject();
+        //get value from local database from login API
+        try {
+            params.put("Customerstatus",true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, syncapi, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.e("Sync API Response",response.toString());
+
+                try {
+                    if(response.getBoolean("success")== true) {
+
+                        mdialog.dismiss();
+
+
+
+                    }else {
+                        mdialog.dismiss();
+                        Toast.makeText(MoreDeatilsActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Log.e("Data",response.toString());
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mdialog.dismiss();
+                Log.e("error",error.getMessage());
+            }
+        });
+
+        Volley.newRequestQueue(MoreDeatilsActivity.this).add(objectRequest);
 
 
     }

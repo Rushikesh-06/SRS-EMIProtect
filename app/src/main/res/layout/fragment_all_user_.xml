@@ -11,9 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:visibility="gone"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:padding="10dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
         android:gravity="center"
         android:text="No Records Found.">
-
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView

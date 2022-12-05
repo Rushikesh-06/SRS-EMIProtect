@@ -35,7 +35,7 @@
         android:id="@+id/MD_custphoto"
         android:layout_gravity="center"
         android:layout_width="150dp"
-        android:src="@drawable/qrcode"
+        android:src="@drawable/unlockstatus"
         android:layout_height="150dp"
         android:layout_margin="10dp"/>
 
@@ -58,7 +58,7 @@
             android:id="@+id/MD_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rushikesh "
+            android:text="Username "
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -84,7 +84,7 @@
             android:id="@+id/MD_registerno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1029384756"
+            android:text="Register No"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -110,7 +110,7 @@
             android:id="@+id/MD_currentphoneno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1029384756"
+            android:text="Current No"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -196,7 +196,7 @@
             android:id="@+id/MD_emidate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13-12-2022 "
+            android:text="EMI Date"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -222,7 +222,7 @@
             android:id="@+id/MD_deviceamount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13-12-2022 "
+            android:text="Device Amount"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -249,7 +249,7 @@
             android:id="@+id/MD_downpayment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10,000"
+            android:text="Down PAyment"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -275,7 +275,7 @@
             android:id="@+id/MD_emiamount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25,000"
+            android:text="Emi Amount"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -301,7 +301,7 @@
             android:id="@+id/MD_emitenure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12 months"
+            android:text=".. months"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -360,7 +360,7 @@
             android:id="@+id/MD_deviceaname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apple"
+            android:text="Brand Name"
             android:textSize="15dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -461,6 +461,27 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_syncCust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sync Customer"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:background="@drawable/dashboarditem"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:id="@+id/btn_lockuser"
@@ -488,6 +509,7 @@
 
 
     </LinearLayout>
+
 
     <LinearLayout
         android:gravity="center"

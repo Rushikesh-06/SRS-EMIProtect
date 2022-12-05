@@ -60,6 +60,7 @@ public class AllUser_Fragment extends Fragment {
         //get value from local database from login API
         try {
             params.put("VendorID", Integer.parseInt(mVendorID));
+//            params.put("VendorID", 6);
             params.put("CustomerStatus", 0);
         } catch (JSONException e) {
             e.printStackTrace();

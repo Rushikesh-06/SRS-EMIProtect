@@ -173,6 +173,17 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="Cust Support to GoEx: 98925 80308 "
+            android:textColor="@android:color/white"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
