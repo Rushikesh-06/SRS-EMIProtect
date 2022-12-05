@@ -56,7 +56,7 @@ public class Balancepolicy_fragment extends Fragment {
         //get value from local database from login API
         try {
             params.put("VendorID",Integer.parseInt(mVendorID));
-            params.put("CustomerStatus",0);
+//            params.put("CustomerStatus",0);
             params.put("PolicyStatus",1);
         } catch (JSONException e) {
             e.printStackTrace();
