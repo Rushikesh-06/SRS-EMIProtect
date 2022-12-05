@@ -68,7 +68,7 @@ public class UnistallUser_Fragment extends Fragment {
         //get value from local database from login API
         try {
             params.put("VendorID",Integer.parseInt(mVendorID));
-            params.put("CustomerStatus",2);
+            params.put("CustomerStatus",5);
         } catch (JSONException e) {
             e.printStackTrace();
         }

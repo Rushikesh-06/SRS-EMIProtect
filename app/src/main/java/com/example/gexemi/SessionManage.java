@@ -12,8 +12,6 @@ public class SessionManage {
         editor = preferences.edit();
     }
 
-
-
     public boolean getLoginStatus() {
         return preferences.getBoolean("Is_login", false);
     }

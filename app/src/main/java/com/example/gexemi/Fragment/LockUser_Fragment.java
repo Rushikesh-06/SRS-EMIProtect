@@ -54,7 +54,7 @@ public class LockUser_Fragment extends Fragment {
         //get value from local database from login API
         try {
             params.put("VendorID",Integer.parseInt(mVendorID));
-            params.put("CustomerStatus",1);
+            params.put("CustomerStatus",3);
         } catch (JSONException e) {
             e.printStackTrace();
         }

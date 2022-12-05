@@ -2,10 +2,12 @@ package com.example.gexemi.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,6 +69,19 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
             }
         });
 
+        holder.btn_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phoneno =  user.getPhoneno();
+
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                String temp = "tel:" + phoneno;
+                callIntent.setData(Uri.parse(temp));
+                context.startActivity(callIntent);
+
+            }
+        });
+
 
     }
 
@@ -78,6 +93,7 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
     public class LockuserHolder extends RecyclerView.ViewHolder {
 
         TextView lock_username,lock_custid,lock_phoneno,item_moredetails,userstatus;
+        ImageView btn_call;
 
         public LockuserHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +103,7 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
             lock_phoneno = itemView.findViewById(R.id.item_phoneno);
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
             userstatus = itemView.findViewById(R.id.userstatus);
+            btn_call = itemView.findViewById(R.id.btn_call);
 
         }
     }
