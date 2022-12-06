@@ -19,6 +19,7 @@ public class Policy extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tab_layout);
         pager2 = findViewById(R.id.view_pager2);
+        pager2.setOffscreenPageLimit(3);
         FragmentManager fm = getSupportFragmentManager();
         adapter = new PolicyFragmentAdapter(fm, getLifecycle());
         pager2.setAdapter(adapter);
