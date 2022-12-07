@@ -25,7 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 //Wa.me/919892580308
-        getSupportActionBar().setTitle("Go Electronix pvt. ltd.");
+        getSupportActionBar().setTitle("Goelectronix Technologies Pvt Ltd");
         tv_qr = findViewById(R.id.TV_qr);
         tv_policy = findViewById(R.id.TV_policy);
         tv_users = findViewById(R.id.TV_user);
@@ -36,7 +36,7 @@ public class DashboardActivity extends AppCompatActivity {
         support.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send/?phone=919892580308&text=Hi"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send/?phone=919892580308&text=*Hii%20Am%20retailer%20need%20support*"));
                 startActivity(intent);
             }
         });
