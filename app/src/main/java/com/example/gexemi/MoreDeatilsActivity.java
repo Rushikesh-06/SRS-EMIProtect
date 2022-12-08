@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class MoreDeatilsActivity extends AppCompatActivity {
 
     private  String TAG = getClass().getSimpleName() ;
-    TextView MD_username,MD_registerno,MD_currentphoneno,MD_mailID,MD_loandate,MD_emidate,MD_downpayment, MD_emiamount;
+    TextView MD_username,MD_registerno,MD_currentphoneno,sim2,MD_mailID,MD_loandate,MD_emidate,MD_downpayment, MD_emiamount;
     TextView MD_emitenure, MD_financecompany,MD_deviceaname,MD_imeino,MD_currentstatus,MD_unlockcode,MD_deviceamount;
 
     ImageView MD_custphoto;
@@ -56,6 +56,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         MD_username = findViewById(R.id.MD_username);
         MD_registerno = findViewById(R.id.MD_registerno);
         MD_currentphoneno = findViewById(R.id.MD_currentphoneno);
+        sim2 = findViewById(R.id.sim2);
         MD_mailID = findViewById(R.id.MD_mailID);
 //        MD_loandate = findViewById(R.id.MD_loandate);
         MD_emidate = findViewById(R.id.MD_emidate);
@@ -117,7 +118,9 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         JSONObject params = new JSONObject();
         //get value from local database from login API
         try {
-            params.put("Customerstatus",true);
+            params.put("IsSyncCustomer",true);
+            params.put("DeviceID",deviceID);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -194,6 +197,8 @@ public class MoreDeatilsActivity extends AppCompatActivity {
                         MD_emidate.setText(response.getString("emiDate").split("T")[0]);
                         MD_emitenure.setText(response.getString("emiTenure"));
                         MD_currentstatus.setText(response.getString("customerStatus"));
+                        MD_currentphoneno.setText(response.getString("simNumber1"));
+                        sim2.setText(response.getString("simNumber2"));
 
                         if (response.getString("customerStatus").equals("LOCKED")){
                             btn_lockuser.setVisibility(View.GONE);

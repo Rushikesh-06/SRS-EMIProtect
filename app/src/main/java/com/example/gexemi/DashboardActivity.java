@@ -11,7 +11,22 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Method;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -50,6 +65,32 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mDialog.setContentView(R.layout.qr_popup);
+                ImageView IV_qrcode = mDialog.findViewById(R.id.IV_qrcode);
+               JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,"http://goelectronix.in/api/app/GetConfiguration",new JSONObject(), new Response.Listener<JSONObject>() {
+                   @Override
+                   public void onResponse(JSONObject response) {
+                       try {
+                           if (response.getBoolean("success")){
+                               Glide.with(DashboardActivity.this).load(response.getString("qrScanCodeURL")).diskCacheStrategy(DiskCacheStrategy.NONE)
+                                       .skipMemoryCache(true).into(IV_qrcode);
+                           } else {
+                               Toast.makeText(DashboardActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
+                           }
+                       } catch (JSONException e) {
+                           e.printStackTrace();
+                       }
+
+//
+
+                   }
+               }, new Response.ErrorListener() {
+                   @Override
+                   public void onErrorResponse(VolleyError error) {
+
+                   }
+               });
+                Volley.newRequestQueue(DashboardActivity.this).add(jsonObjectRequest);
+
                 mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 mDialog.show();
             }

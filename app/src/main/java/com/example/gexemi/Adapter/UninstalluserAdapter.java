@@ -61,18 +61,18 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
             }
         });
 
-        holder.btn_call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String phoneno =  user.getPhoneno();
-
-                Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                String temp = "tel:" + phoneno;
-                callIntent.setData(Uri.parse(temp));
-                context.startActivity(callIntent);
-
-            }
-        });
+//        holder.btn_call.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String phoneno =  user.getPhoneno();
+//
+//                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+//                String temp = "tel:" + phoneno;
+//                callIntent.setData(Uri.parse(temp));
+//                context.startActivity(callIntent);
+//
+//            }
+//        });
 
     }
 
@@ -85,7 +85,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
     public class UninstalluserHolder extends RecyclerView.ViewHolder {
 
         TextView uninstall_username,uninstall_custid,uninstall_phoneno,item_moredetails;
-        ImageView btn_call;
+//        ImageView btn_call;
 
 
         public UninstalluserHolder(@NonNull View itemView) {
@@ -95,7 +95,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
             uninstall_custid = itemView.findViewById(R.id.item_custid);
             uninstall_phoneno = itemView.findViewById(R.id.item_phoneno);
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
-            btn_call = itemView.findViewById(R.id.btn_call);
+//            btn_call = itemView.findViewById(R.id.btn_call);
 
 
         }
