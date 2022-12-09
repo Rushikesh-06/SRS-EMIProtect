@@ -27,6 +27,7 @@ public class Policy extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Balance Policies"));
         tabLayout.addTab(tabLayout.newTab().setText("Assign Policies"));
         tabLayout.addTab(tabLayout.newTab().setText("Uninstall Policies"));
+        tabLayout.addTab(tabLayout.newTab().setText("Expired Policies"));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

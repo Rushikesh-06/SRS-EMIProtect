@@ -42,6 +42,7 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
         holder.lock_username.setText(user.getUsername());
         holder.lock_custid.setText(""+user.getCustid());
         holder.lock_phoneno.setText(user.getPhoneno());
+        holder.date.setText(user.getDate());
         String current_userstatus = user.getCust_status();
 
         if (current_userstatus.equals("UNLOCKED")){
@@ -92,7 +93,7 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
 
     public class LockuserHolder extends RecyclerView.ViewHolder {
 
-        TextView lock_username,lock_custid,lock_phoneno,item_moredetails,userstatus;
+        TextView lock_username,lock_custid,lock_phoneno,item_moredetails,userstatus,date;
         ImageView btn_call;
 
         public LockuserHolder(@NonNull View itemView) {
@@ -104,6 +105,7 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
             userstatus = itemView.findViewById(R.id.userstatus);
             btn_call = itemView.findViewById(R.id.btn_call);
+            date = itemView.findViewById(R.id.date);
 
         }
     }

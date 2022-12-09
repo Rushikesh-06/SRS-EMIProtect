@@ -9,6 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.gexemi.Fragment.Assignpolicy_fragment;
 import com.example.gexemi.Fragment.Balancepolicy_fragment;
+import com.example.gexemi.Fragment.Expiredpolicy_fragment;
 import com.example.gexemi.Fragment.Uninstallpolicy_fragment;
 
 public class PolicyFragmentAdapter extends FragmentStateAdapter {
@@ -28,6 +29,8 @@ public class PolicyFragmentAdapter extends FragmentStateAdapter {
                 return new Assignpolicy_fragment();
             case 2 :
                 return new Uninstallpolicy_fragment();
+            case 3 :
+                return new Expiredpolicy_fragment();
             default:
                 return null;
         }
@@ -36,6 +39,6 @@ public class PolicyFragmentAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 4;
     }
 }

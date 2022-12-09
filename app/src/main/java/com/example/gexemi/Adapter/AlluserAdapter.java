@@ -45,6 +45,7 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
         holder.all_username.setText(user.getUsername());
         holder.all_custid.setText(""+user.getCustid());
         holder.all_phoneno.setText(user.getPhoneno());
+        holder.date.setText(user.getDate());
         String current_userstatus = user.getCust_status();
 
         if (current_userstatus.equals("UNLOCKED")) {
@@ -94,7 +95,7 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
 
     public class AlluserHolder extends RecyclerView.ViewHolder {
 
-        TextView all_username,all_custid,all_phoneno,item_moredetails,userstatus;
+        TextView all_username,all_custid,all_phoneno,item_moredetails,userstatus,date;
         ImageView btn_call;
 
         public AlluserHolder(@NonNull View itemView) {
@@ -105,6 +106,7 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
             all_phoneno = itemView.findViewById(R.id.item_phoneno);
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
             userstatus = itemView.findViewById(R.id.userstatus);
+            date = itemView.findViewById(R.id.date);
             btn_call = itemView.findViewById(R.id.btn_call);
 
         }

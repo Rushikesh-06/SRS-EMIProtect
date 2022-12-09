@@ -88,10 +88,10 @@ public class UnistallUser_Fragment extends Fragment {
                             Integer result_custid = object.getInt("customerID");
                             String result_phoneno = object.getString("mobileNumber");
                             String serialno = object.getString("serialNumber");
-
                             String Cust_status = object.getString("customerStatus");
+                            String Date = object.getString("date");
 
-                            users.add(new UserClass(result_username,result_custid,result_phoneno,serialno,Cust_status));
+                            users.add(new UserClass(result_username,result_custid,result_phoneno,serialno,Cust_status,Date));
                         }
                         if (users.size() == 0) {
                             no_record.setVisibility(View.VISIBLE);

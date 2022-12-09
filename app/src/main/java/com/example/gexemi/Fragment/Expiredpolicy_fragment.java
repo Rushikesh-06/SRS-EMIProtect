@@ -20,7 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.gexemi.Adapter.BalancePolicyAdapter;
+import com.example.gexemi.Adapter.AssignpolicyAdapter;
+import com.example.gexemi.Adapter.ExpiredpolicyAdapter;
+import com.example.gexemi.Adapter.UninstallpolicyAdapter;
 import com.example.gexemi.PolicyClass;
 import com.example.gexemi.R;
 
@@ -31,20 +33,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+public class Expiredpolicy_fragment extends Fragment {
 
-public class Balancepolicy_fragment extends Fragment {
-
-    private   String TAG = getClass().getSimpleName();
-    String balanceapi_url = "http://goelectronix.in/api/app/VendorPolicies";
+    String expiredapi_url = "http://goelectronix.in/api/app/VendorPolicies";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_balancepolicy_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_expiredpolicy_fragment, container, false);
 
         TextView no_record = view.findViewById(R.id.no_record);
-        RecyclerView recyclerView =  view.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        RecyclerView expiredrecycler =  view.findViewById(R.id.expired_recyclerview);
+        expiredrecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         List<PolicyClass> policies =new ArrayList<>();
 
         SharedPreferences preferences;
@@ -56,16 +56,15 @@ public class Balancepolicy_fragment extends Fragment {
         //get value from local database from login API
         try {
             params.put("VendorID",Integer.parseInt(mVendorID));
-//            params.put("CustomerStatus",0);
-            params.put("PolicyStatus",1);
+            params.put("PolicyStatus",4);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, balanceapi_url, params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, expiredapi_url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e(TAG, "onResponse: "+response );
+
                 try {
                     if(response.getBoolean("success")== true) {
 
@@ -77,24 +76,20 @@ public class Balancepolicy_fragment extends Fragment {
                             String policynumber =  object.getString("policyNumber");
                             String customerName =  object.getString("customerName");
                             String date =  object.getString("date");
-                            String phoneno =  "";
+                            String phoneno =  "1212121212";
 
-
-                            //get name from login page API
                             String vendorname =  preferences.getString("VendorName","");
 
                             policies.add(new PolicyClass(policynumber,vendorname,customerName,date,phoneno));
-
                         }
                         if (policies.size() == 0) {
                             no_record.setVisibility(View.VISIBLE);
-                            recyclerView.setVisibility(View.GONE);
+                            expiredrecycler.setVisibility(View.GONE);
                         } else {
                             no_record.setVisibility(View.GONE);
-                            recyclerView.setVisibility(View.VISIBLE);
+                            expiredrecycler.setVisibility(View.VISIBLE);
                         }
-                        recyclerView.setAdapter(new BalancePolicyAdapter(getContext(),policies));
-
+                        expiredrecycler.setAdapter(new ExpiredpolicyAdapter(getContext(),policies));
 
                     }else {
                         Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -117,7 +112,6 @@ public class Balancepolicy_fragment extends Fragment {
 
         Volley.newRequestQueue(getContext()).add(objectRequest);
 
-        // Inflate the layout for this fragment
         return view;
     }
 }

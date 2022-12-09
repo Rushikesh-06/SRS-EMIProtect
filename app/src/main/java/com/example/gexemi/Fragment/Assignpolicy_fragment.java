@@ -76,14 +76,14 @@ public class Assignpolicy_fragment extends Fragment {
 
                             JSONObject object = response_result.getJSONObject(i);
                             String policynumber =  object.getString("policyNumber");
-                            String policystatus =  object.getString("policyStatus");
-                            Integer policyID =  object.getInt("policyID");
+                            String customerName =  object.getString("customerName");
+                            String date =  object.getString("date");
+                            String phoneno =  "1212121212";
 
-                            //get name from login page API
-                            String vendorname =  "Rushikesh_vendor";
-                            String shop_name = "Assign Vendor";
+                            String vendorname =  preferences.getString("VendorName","");
 
-                            policies.add(new PolicyClass(policynumber,vendorname,shop_name,policyID));
+                            policies.add(new PolicyClass(policynumber,vendorname,customerName,date,phoneno));
+
                         }
                         if (policies.size() == 0) {
                             no_record.setVisibility(View.VISIBLE);

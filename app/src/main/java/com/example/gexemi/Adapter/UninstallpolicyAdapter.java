@@ -36,8 +36,9 @@ public class UninstallpolicyAdapter extends RecyclerView.Adapter<Uninstallpolicy
 
         PolicyClass policy = policylist.get(position);
         holder.policy_number.setText(policy.getPolicyNumber());
-        holder.vendor_name.setText(policy.getVendorName());
-        holder.shop_name.setText(policy.getShop_name());
+        holder.vendor_name.setText(policy.getCust_name());
+        holder.date.setText(policy.getDate());
+        holder.phoneno.setText(policy.getPhoneNo());
         holder.date_title.setText("Uninstall Date");
     }
 
@@ -48,14 +49,15 @@ public class UninstallpolicyAdapter extends RecyclerView.Adapter<Uninstallpolicy
 
     public class UninstallpolicyHolder extends RecyclerView.ViewHolder {
 
-        TextView policy_number,vendor_name,shop_name,date_title;
+        TextView policy_number,vendor_name,date,date_title,phoneno;
 
         public UninstallpolicyHolder(@NonNull View itemView) {
             super(itemView);
 
             policy_number = itemView.findViewById(R.id.policy_number);
             vendor_name = itemView.findViewById(R.id.vendor_name);
-            shop_name = itemView.findViewById(R.id.shop_name);
+            date = itemView.findViewById(R.id.Date);
+            phoneno = itemView.findViewById(R.id.phoneno);
             date_title = itemView.findViewById(R.id.date_title);
         }
     }

@@ -9,10 +9,11 @@
     app:cardCornerRadius="20dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="horizontal">
 
 
@@ -29,7 +30,7 @@
                 <TextView
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:text="User Name :"
+                    android:text="Policy Number :"
                     android:textStyle="bold"
                     android:textSize="18dp"
                     android:layout_marginTop="5dp"
@@ -38,10 +39,39 @@
                     >
                 </TextView>
                 <TextView
-                    android:id="@+id/item_username"
+                    android:id="@+id/policy_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rushikesh"
+                    android:text="ABC00001"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@android:color/black">
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/nametitle"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Customer Name :"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@android:color/black"
+                    >
+                </TextView>
+                <TextView
+                    android:id="@+id/vendor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Geolectronix Tech Pvt Ltd"
                     android:textSize="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
@@ -54,9 +84,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/date_title"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:text="Customer ID :"
+                    android:text="Expiry Date :"
                     android:textStyle="bold"
                     android:textSize="18dp"
                     android:layout_marginTop="5dp"
@@ -65,62 +96,10 @@
                     >
                 </TextView>
                 <TextView
-                    android:id="@+id/item_custid"
+                    android:id="@+id/Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="001"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@android:color/black">
-                </TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:text="Mobile No :"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@android:color/black"
-                    >
-                </TextView>
-                <TextView
-                    android:id="@+id/item_phoneno"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1092837465"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@android:color/black">
-                </TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:text="Reg Date :"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@android:color/black"
-                    >
-                </TextView>
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date"
+                    android:text="GOEX Shop"
                     android:textSize="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
@@ -128,40 +107,19 @@
                 </TextView>
             </LinearLayout>
 
-
-            <RelativeLayout
+            <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/userstatus"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/lockstatus" />
-
-                <TextView
-                    android:id="@+id/item_moredetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="right"
-                    android:padding="5dp"
-                    android:text="More Details"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
+                android:layout_height="wrap_content"
+                android:text="More Details"
+                android:textSize="15dp"
+                android:gravity="right"
+                android:padding="5dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
 
         </LinearLayout>
     </LinearLayout>

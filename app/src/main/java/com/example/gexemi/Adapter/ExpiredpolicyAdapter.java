@@ -1,7 +1,6 @@
 package com.example.gexemi.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,35 +14,29 @@ import com.example.gexemi.R;
 
 import java.util.List;
 
-public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdapter.PolicyHolder> {
+public class ExpiredpolicyAdapter extends RecyclerView.Adapter<ExpiredpolicyAdapter.ExpiredpolicyHolder> {
 
     private Context context;
     List<PolicyClass> policylist;
 
-    public BalancePolicyAdapter(Context context, List<PolicyClass> policies) {
+    public ExpiredpolicyAdapter(Context context, List<PolicyClass> policies) {
         this.context = context;
         policylist = policies;
     }
 
     @NonNull
     @Override
-    public PolicyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =LayoutInflater.from(context).inflate(R.layout.balancepolicy_item,parent,false);
-        return new PolicyHolder(view);
+    public ExpiredpolicyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.balancepolicy_item,parent,false);
+        return new ExpiredpolicyHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PolicyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ExpiredpolicyHolder holder, int position) {
 
         PolicyClass policy = policylist.get(position);
         holder.policy_number.setText(policy.getPolicyNumber());
         holder.date.setText(policy.getDate());
-
-
-//        Log.e("HolderData",policy.getPolicyNumber());
-//        Log.e("HolderData",policy.getShop_name());
-//        Log.e("HolderData",policy.getVendorName());
-
     }
 
     @Override
@@ -51,11 +44,11 @@ public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdap
         return policylist.size();
     }
 
-    public class PolicyHolder extends RecyclerView.ViewHolder {
+    public class ExpiredpolicyHolder extends RecyclerView.ViewHolder {
 
-        TextView policy_number,date;
+        TextView policy_number,vendor_name,date,date_title;
 
-        public PolicyHolder(@NonNull View itemView) {
+        public ExpiredpolicyHolder(@NonNull View itemView) {
             super(itemView);
 
             policy_number = itemView.findViewById(R.id.policy_number);

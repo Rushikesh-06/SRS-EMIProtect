@@ -43,6 +43,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
         holder.uninstall_username.setText(user.getUsername());
         holder.uninstall_custid.setText(""+user.getCustid());
         holder.uninstall_phoneno.setText(user.getPhoneno());
+        holder.date.setText(user.getDate());
 
         holder.item_moredetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +85,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
 
     public class UninstalluserHolder extends RecyclerView.ViewHolder {
 
-        TextView uninstall_username,uninstall_custid,uninstall_phoneno,item_moredetails;
+        TextView uninstall_username,uninstall_custid,uninstall_phoneno,item_moredetails,date;
 //        ImageView btn_call;
 
 
@@ -96,6 +97,7 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
             uninstall_phoneno = itemView.findViewById(R.id.item_phoneno);
             item_moredetails = itemView.findViewById(R.id.item_moredetails);
 //            btn_call = itemView.findViewById(R.id.btn_call);
+            date = itemView.findViewById(R.id.date);
 
 
         }

@@ -3,6 +3,7 @@ package com.example.gexemi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,11 +22,14 @@ import com.bumptech.glide.Glide;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MoreDeatilsActivity extends AppCompatActivity {
 
     private  String TAG = getClass().getSimpleName() ;
-    TextView MD_username,MD_registerno,MD_currentphoneno,sim2,MD_mailID,MD_loandate,MD_emidate,MD_downpayment, MD_emiamount;
-    TextView MD_emitenure, MD_financecompany,MD_deviceaname,MD_imeino,MD_currentstatus,MD_unlockcode,MD_deviceamount;
+    TextView MD_username,MD_registerno,MD_currentphoneno,sim2,MD_mailID,MD_emidate,MD_downpayment, MD_emiamount;
+    TextView MD_emitenure, MD_financecompany,MD_deviceaname,MD_imeino,MD_currentstatus,MD_unlockcode,MD_deviceamount,additionalcomment;
 
     ImageView MD_custphoto;
     Button btn_lockuser,btn_unlockuser,btn_uninstalluser, btn_syncCust;
@@ -35,6 +39,9 @@ public class MoreDeatilsActivity extends AppCompatActivity {
 
     String IMEI_No;
     String deviceID;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     Integer userstatusID = 0;
 
@@ -53,6 +60,9 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         mdialog.setCancelable(false);
         mdialog.show();
 
+        preferences = getSharedPreferences("VendorDetails", MODE_PRIVATE);
+        editor = preferences.edit();
+
         MD_username = findViewById(R.id.MD_username);
         MD_registerno = findViewById(R.id.MD_registerno);
         MD_currentphoneno = findViewById(R.id.MD_currentphoneno);
@@ -70,6 +80,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         MD_unlockcode = findViewById(R.id.MD_unlockcode);
         MD_custphoto = findViewById(R.id.MD_custphoto);
         MD_deviceamount = findViewById(R.id.MD_deviceamount);
+        additionalcomment = findViewById(R.id.additionalcomment);
 
         btn_lockuser = findViewById(R.id.btn_lockuser);
         btn_unlockuser = findViewById(R.id.btn_unlockuser);
@@ -195,6 +206,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
                         MD_currentstatus.setText(response.getString("customerStatus"));
                         MD_currentphoneno.setText(response.getString("simNumber1"));
                         sim2.setText(response.getString("simNumber2"));
+//                        additionalcomment.setText(response.getString("additionalComment"));
 
                         if (response.getString("customerStatus").equals("LOCKED")){
                             btn_lockuser.setVisibility(View.GONE);
@@ -276,6 +288,10 @@ public class MoreDeatilsActivity extends AppCompatActivity {
                             btn_uninstalluser.setVisibility(View.GONE);
                             btn_unlockuser.setVisibility(View.GONE);
                             btn_lockuser.setVisibility(View.GONE);
+
+                            String uninstal_date = new SimpleDateFormat("dd MMMM yyyy").format(new Date());
+
+                            editor.putString("UninstalledDate",uninstal_date);
                         }
 
 

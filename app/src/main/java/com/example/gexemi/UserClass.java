@@ -7,6 +7,7 @@ public class UserClass {
     String Phoneno;
     String SerialNo;
     String Cust_status;
+    String Date;
 
     public String getUsername() {
         return Username;
@@ -48,11 +49,20 @@ public class UserClass {
         Cust_status = cust_status;
     }
 
-    public UserClass(String username, Integer custid, String phoneno, String serialNo, String cust_status) {
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public UserClass(String username, Integer custid, String phoneno, String serialNo, String cust_status, String date) {
         Username = username;
         Custid = custid;
         Phoneno = phoneno;
         SerialNo = serialNo;
         Cust_status = cust_status;
+        Date = date;
     }
 }

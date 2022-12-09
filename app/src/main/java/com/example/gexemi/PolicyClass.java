@@ -4,14 +4,16 @@ public class PolicyClass {
 
     String PolicyNumber ;
     String VendorName ;
-    String shop_name;
-    Integer policyID;
+    String Cust_name;
+    String date;
+    String PhoneNo;
 
-    public PolicyClass(String policyNumber, String vendorName, String shop_name, Integer policyID) {
+    public PolicyClass(String policyNumber, String vendorName, String cust_name, String date,String phoneNo) {
         PolicyNumber = policyNumber;
         VendorName = vendorName;
-        this.shop_name = shop_name;
-        this.policyID = policyID;
+        Cust_name = cust_name;
+        PhoneNo = phoneNo;
+        this.date = date;
     }
 
     public String getPolicyNumber() {
@@ -30,19 +32,27 @@ public class PolicyClass {
         VendorName = vendorName;
     }
 
-    public String getShop_name() {
-        return shop_name;
+    public String getCust_name() {
+        return Cust_name;
     }
 
-    public void setShop_name(String shop_name) {
-        this.shop_name = shop_name;
+    public void setCust_name(String cust_name) {
+        Cust_name = cust_name;
     }
 
-    public Integer getPolicyID() {
-        return policyID;
+    public String getPhoneNo() {
+        return PhoneNo;
     }
 
-    public void setPolicyID(Integer policyID) {
-        this.policyID = policyID;
+    public void setPhoneNo(String phoneNo) {
+        PhoneNo = phoneNo;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
