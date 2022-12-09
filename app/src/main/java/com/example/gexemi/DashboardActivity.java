@@ -59,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
         dashboard_username.setText(preferences.getString("VendorName",""));
-        dashboard_vendorID.setText("VendorID : "+preferences.getString("Vendorcode",""));
+        dashboard_vendorID.setText("Vendor Code:"+preferences.getString("Vendorcode",""));
 
         tv_qr.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,9 +26,10 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText username,password;
+    EditText username, password;
     ImageView password_icon;
     Button btn_login;
+    TextView support;
     private boolean passwordshowing = false;
     SessionManage session;
 
@@ -39,13 +42,21 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getSupportActionBar().setTitle("Goelectronix Technologies Pvt Ltd");
         username = findViewById(R.id.et_username);
         password = findViewById(R.id.et_password);
         password_icon = findViewById(R.id.password_icon);
         btn_login = findViewById(R.id.btn_signin);
+        support = findViewById(R.id.support);
+        support.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send/?phone=919892580308&text=*Hii%20Am%20retailer%20need%20support*"));
+                startActivity(intent);
+            }
+        });
 
-        preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
+        preferences = getSharedPreferences("VendorDetails", MODE_PRIVATE);
         editor = preferences.edit();
 
         session = new SessionManage(LoginActivity.this);
@@ -57,29 +68,27 @@ public class LoginActivity extends AppCompatActivity {
         password_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (passwordshowing){
+                if (passwordshowing) {
                     passwordshowing = false;
                     password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     password_icon.setImageResource(R.drawable.ic_password_show);
-                }else{
-                    passwordshowing= true;
+                } else {
+                    passwordshowing = true;
                     password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     password_icon.setImageResource(R.drawable.ic_password_hide);
                 }
             }
         });
 
-                btn_login.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Login();
-                    }
-                });
-
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Login();
+            }
+        });
 
 
     }
-
 
 
     private void Login() {
@@ -92,8 +101,8 @@ public class LoginActivity extends AppCompatActivity {
         JSONObject params = new JSONObject();
         //get value from local database from login API
         try {
-            params.put("EmailID",username.getText().toString());
-            params.put("Password",password.getText().toString());
+            params.put("EmailID", username.getText().toString());
+            params.put("Password", password.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -103,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 dialog.dismiss();
                 try {
-                    if(response.getBoolean("success")== true) {
+                    if (response.getBoolean("success") == true) {
 
                         session.addLoginStatus(true);
 
@@ -115,20 +124,20 @@ public class LoginActivity extends AppCompatActivity {
                         String ShopName = response.getString("shopName");
                         String EmailId = response.getString("emailID");
 
-                        editor.putString("Vendorcode",Vendorcode);
-                        editor.putString("VendorID",VendorID.toString());
-                        editor.putString("VendorUserID",VendorUserID);
-                        editor.putString("VendorName",VendorName);
-                        editor.putString("VendorMobileNumber",VendorMobileNumber);
-                        editor.putString("ShopName",ShopName);
-                        editor.putString("EmailId",EmailId);
+                        editor.putString("Vendorcode", Vendorcode);
+                        editor.putString("VendorID", VendorID.toString());
+                        editor.putString("VendorUserID", VendorUserID);
+                        editor.putString("VendorName", VendorName);
+                        editor.putString("VendorMobileNumber", VendorMobileNumber);
+                        editor.putString("ShopName", ShopName);
+                        editor.putString("EmailId", EmailId);
 
                         editor.commit();
 
                         startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
 
 
-                    }else {
+                    } else {
                         String error = response.getString("message");
                         Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
                     }

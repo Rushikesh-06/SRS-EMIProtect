@@ -39,6 +39,7 @@ public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdap
         holder.policy_number.setText(policy.getPolicyNumber());
         holder.vendor_name.setText(policy.getVendorName());
         holder.shop_name.setText(policy.getShop_name());
+        holder.date_title.setText("Rev. Date");
 
         Log.e("HolderData",policy.getPolicyNumber());
         Log.e("HolderData",policy.getShop_name());
@@ -53,7 +54,7 @@ public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdap
 
     public class PolicyHolder extends RecyclerView.ViewHolder {
 
-        TextView policy_number,vendor_name,shop_name;
+        TextView policy_number,vendor_name,shop_name,date_title;
 
         public PolicyHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +62,7 @@ public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdap
             policy_number = itemView.findViewById(R.id.policy_number);
             vendor_name = itemView.findViewById(R.id.vendor_name);
             shop_name = itemView.findViewById(R.id.shop_name);
+            date_title = itemView.findViewById(R.id.date_title);
         }
     }
 }

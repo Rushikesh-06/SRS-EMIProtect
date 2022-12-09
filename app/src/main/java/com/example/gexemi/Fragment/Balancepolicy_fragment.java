@@ -75,6 +75,8 @@ public class Balancepolicy_fragment extends Fragment {
 
                             JSONObject object = response_result.getJSONObject(i);
                             String policynumber =  object.getString("policyNumber");
+                            String customerName =  object.getString("customerName");
+                            String date =  object.getString("date");
                             String policystatus =  object.getString("policyStatus");
                             Integer policyID =  object.getInt("policyID");
 
@@ -82,7 +84,7 @@ public class Balancepolicy_fragment extends Fragment {
                             String vendorname =  "Rushikesh_vendor";
                             String shop_name = "Balance Vendor";
 
-                            policies.add(new PolicyClass(policynumber,vendorname,shop_name,policyID));
+                            policies.add(new PolicyClass(policynumber,date,customerName,policyID));
                         }
                         if (policies.size() == 0) {
                             no_record.setVisibility(View.VISIBLE);

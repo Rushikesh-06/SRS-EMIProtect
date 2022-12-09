@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Users/pankaj/StudioProjects/Gex-EMI/emilockervendor.jks')
+            storePassword 'vendor@123'
+            keyAlias 'vendor'
+            keyPassword 'vendor@123'
+        }
+    }
     compileSdk 32
 
     defaultConfig {

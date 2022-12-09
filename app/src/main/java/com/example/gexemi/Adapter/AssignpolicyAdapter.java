@@ -38,6 +38,7 @@ public class AssignpolicyAdapter extends RecyclerView.Adapter<AssignpolicyAdapte
         holder.policy_number.setText(policy.getPolicyNumber());
         holder.vendor_name.setText(policy.getVendorName());
         holder.shop_name.setText(policy.getShop_name());
+        holder.date_title.setText("Reg. Date");
 
     }
 
@@ -48,7 +49,7 @@ public class AssignpolicyAdapter extends RecyclerView.Adapter<AssignpolicyAdapte
 
     public class Assignpolicyholder extends RecyclerView.ViewHolder {
 
-        TextView policy_number,vendor_name,shop_name;
+        TextView policy_number,vendor_name,shop_name,date_title;
 
         public Assignpolicyholder(@NonNull View itemView) {
             super(itemView);
@@ -56,6 +57,7 @@ public class AssignpolicyAdapter extends RecyclerView.Adapter<AssignpolicyAdapte
             policy_number = itemView.findViewById(R.id.policy_number);
             vendor_name = itemView.findViewById(R.id.vendor_name);
             shop_name = itemView.findViewById(R.id.shop_name);
+            date_title = itemView.findViewById(R.id.date_title);
 
         }
     }

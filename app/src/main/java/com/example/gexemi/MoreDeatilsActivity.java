@@ -133,11 +133,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
 
                 try {
                     if(response.getBoolean("success")== true) {
-
-                        mdialog.dismiss();
-
-
-
+                        Toast.makeText(MoreDeatilsActivity.this, "Sync Success", Toast.LENGTH_SHORT).show();
                     }else {
                         mdialog.dismiss();
                         Toast.makeText(MoreDeatilsActivity.this, response.getString("message"), Toast.LENGTH_SHORT).show();
