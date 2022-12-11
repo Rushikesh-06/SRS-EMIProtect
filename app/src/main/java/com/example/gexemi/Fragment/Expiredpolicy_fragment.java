@@ -76,7 +76,7 @@ public class Expiredpolicy_fragment extends Fragment {
                             String policynumber =  object.getString("policyNumber");
                             String customerName =  object.getString("customerName");
                             String date =  object.getString("date");
-                            String phoneno =  "1212121212";
+                            String phoneno =  object.getString("phoneNumber");
 
                             String vendorname =  preferences.getString("VendorName","");
 

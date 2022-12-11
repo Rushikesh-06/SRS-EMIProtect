@@ -206,7 +206,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
                         MD_currentstatus.setText(response.getString("customerStatus"));
                         MD_currentphoneno.setText(response.getString("simNumber1"));
                         sim2.setText(response.getString("simNumber2"));
-//                        additionalcomment.setText(response.getString("additionalComment"));
+                        additionalcomment.setText(response.getString("additionalComment"));
 
                         if (response.getString("customerStatus").equals("LOCKED")){
                             btn_lockuser.setVisibility(View.GONE);
