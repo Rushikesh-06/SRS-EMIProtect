@@ -24,6 +24,11 @@ public class AssignpolicyAdapter extends RecyclerView.Adapter<AssignpolicyAdapte
         policylist = policies;
     }
 
+    public void setfilteredList(List<PolicyClass> filteredList){
+        this.policylist = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public Assignpolicyholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

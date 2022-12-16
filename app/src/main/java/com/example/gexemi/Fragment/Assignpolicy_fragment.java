@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,18 +37,23 @@ public class Assignpolicy_fragment extends Fragment {
 
     String assignapi_url = "http://goelectronix.in/api/app/VendorPolicies";
 
-
-    
+    List<PolicyClass> policies;
+    SearchView searchView;
+    AssignpolicyAdapter assignpolicyAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_assignpolicy_fragment, container, false);
 
         TextView no_record = view.findViewById(R.id.no_record);
+        searchView = view.findViewById(R.id.searchview);
+        searchView.clearFocus();
         RecyclerView assignrecycler =  view.findViewById(R.id.assign_recyclerview);
         assignrecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<PolicyClass> policies =new ArrayList<>();
+        policies =new ArrayList<>();
 
+        setupSearchView();
+        
         SharedPreferences preferences;
         preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
         String mVendorID = preferences.getString("VendorID","");
@@ -117,4 +123,34 @@ public class Assignpolicy_fragment extends Fragment {
 
         return view;
     }
+
+    private void setupSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterlist(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterlist(String newText) {
+        List<PolicyClass> filteredList = new ArrayList<>();
+        for (PolicyClass policy : policies){
+            if (policy.getCust_name().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(policy);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+        }else{
+            assignpolicyAdapter.setfilteredList(filteredList);
+        }
+    }
 }
+

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.gexemi.Adapter.AssignpolicyAdapter;
 import com.example.gexemi.Adapter.BalancePolicyAdapter;
 import com.example.gexemi.PolicyClass;
 import com.example.gexemi.R;
@@ -36,7 +38,9 @@ public class Balancepolicy_fragment extends Fragment {
 
     private   String TAG = getClass().getSimpleName();
     String balanceapi_url = "http://goelectronix.in/api/app/VendorPolicies";
-
+    BalancePolicyAdapter balancepolicyAdapter;
+    List<PolicyClass> policies;
+    SearchView searchView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class Balancepolicy_fragment extends Fragment {
         RecyclerView recyclerView =  view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         List<PolicyClass> policies =new ArrayList<>();
+        setupSearchView();
 
         SharedPreferences preferences;
         preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
@@ -119,5 +124,35 @@ public class Balancepolicy_fragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    private void setupSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterlist(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterlist(String newText) {
+        List<PolicyClass> filteredList = new ArrayList<>();
+        for (PolicyClass policy : policies){
+            if (policy.getCust_name().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(policy);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+        }else{
+
+            balancepolicyAdapter.setfilteredList(filteredList);
+        }
     }
 }

@@ -25,6 +25,11 @@ public class BalancePolicyAdapter extends RecyclerView.Adapter<BalancePolicyAdap
         policylist = policies;
     }
 
+    public void setfilteredList(List<PolicyClass> filteredList){
+        this.policylist = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public PolicyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

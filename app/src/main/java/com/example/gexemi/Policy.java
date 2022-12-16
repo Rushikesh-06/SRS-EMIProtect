@@ -5,13 +5,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Policy extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 pager2;
     PolicyFragmentAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +28,8 @@ public class Policy extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         adapter = new PolicyFragmentAdapter(fm, getLifecycle());
         pager2.setAdapter(adapter);
+        
+
 
         tabLayout.addTab(tabLayout.newTab().setText("Balance Policies"));
         tabLayout.addTab(tabLayout.newTab().setText("Assign Policies"));
@@ -55,4 +62,8 @@ public class Policy extends AppCompatActivity {
         });
 
     }
+
+
+
 }
+
