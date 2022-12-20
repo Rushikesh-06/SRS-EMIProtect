@@ -99,6 +99,8 @@ public class Uninstallpolicy_fragment extends Fragment {
                         } else {
                             no_record.setVisibility(View.GONE);
                             uninstallrecycler.setVisibility(View.VISIBLE);
+                            TextView count = view.findViewById(R.id.count);
+                            count.setText("Total Assigned Policies: "+policies.size());
                         }
                         uninstallpolicyAdapter =new UninstallpolicyAdapter(getContext(),policies);
                         uninstallrecycler.setAdapter(uninstallpolicyAdapter);

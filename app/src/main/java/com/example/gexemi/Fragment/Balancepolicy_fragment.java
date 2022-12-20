@@ -100,6 +100,7 @@ public class Balancepolicy_fragment extends Fragment {
 
                             policies.add(new PolicyClass(policynumber,vendorname,customerName,date,phoneno));
 
+
                         }
                         if (policies.size() == 0) {
                             no_record.setVisibility(View.VISIBLE);
@@ -107,6 +108,9 @@ public class Balancepolicy_fragment extends Fragment {
                         } else {
                             no_record.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
+                            TextView count = view.findViewById(R.id.count);
+                            count.setText("Total Assigned Policies: "+policies.size());
+
                         }
                         balancepolicyAdapter = new BalancePolicyAdapter(getContext(),policies);
                         recyclerView.setAdapter(balancepolicyAdapter);
