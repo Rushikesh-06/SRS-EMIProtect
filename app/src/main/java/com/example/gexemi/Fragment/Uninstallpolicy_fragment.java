@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gexemi.Adapter.BalancePolicyAdapter;
+import com.example.gexemi.Adapter.ExpiredpolicyAdapter;
 import com.example.gexemi.Adapter.UninstallpolicyAdapter;
 import com.example.gexemi.PolicyClass;
 import com.example.gexemi.R;
@@ -36,6 +38,9 @@ import java.util.List;
 public class Uninstallpolicy_fragment extends Fragment {
 
     String uninstallapi_url = "http://goelectronix.in/api/app/VendorPolicies";
+    SearchView searchView;
+    UninstallpolicyAdapter uninstallpolicyAdapter;
+    List<PolicyClass> policies;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +50,10 @@ public class Uninstallpolicy_fragment extends Fragment {
         TextView no_record = view.findViewById(R.id.no_record);
         RecyclerView uninstallrecycler =  view.findViewById(R.id.uninstall_recyclerview);
         uninstallrecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<PolicyClass> policies =new ArrayList<>();
+        policies =new ArrayList<>();
+        searchView = view.findViewById(R.id.searchview);
+
+        setupSearchView();
 
         SharedPreferences preferences;
         preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
@@ -92,7 +100,8 @@ public class Uninstallpolicy_fragment extends Fragment {
                             no_record.setVisibility(View.GONE);
                             uninstallrecycler.setVisibility(View.VISIBLE);
                         }
-                        uninstallrecycler.setAdapter(new UninstallpolicyAdapter(getContext(),policies));
+                        uninstallpolicyAdapter =new UninstallpolicyAdapter(getContext(),policies);
+                        uninstallrecycler.setAdapter(uninstallpolicyAdapter);
 
                     }else {
                         Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -117,5 +126,35 @@ public class Uninstallpolicy_fragment extends Fragment {
 
 
         return view;
+    }
+
+    private void setupSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterlist(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterlist(String newText) {
+        List<PolicyClass> filteredList = new ArrayList<>();
+        for (PolicyClass policy : policies){
+            if (policy.getCust_name().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(policy);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+        }else{
+
+            uninstallpolicyAdapter.setfilteredList(filteredList);
+        }
     }
 }

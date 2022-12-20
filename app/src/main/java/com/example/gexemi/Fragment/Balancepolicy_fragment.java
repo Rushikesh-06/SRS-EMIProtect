@@ -47,10 +47,20 @@ public class Balancepolicy_fragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_balancepolicy_fragment, container, false);
 
         TextView no_record = view.findViewById(R.id.no_record);
+        searchView = view.findViewById(R.id.searchview);
         RecyclerView recyclerView =  view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<PolicyClass> policies =new ArrayList<>();
-        setupSearchView();
+        policies =new ArrayList<>();
+
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                MenuItemCompat.expandActionView(searchView.);
+                searchView.requestFocus();
+                Log.e("TAG", "onClick: Searchview Calling " );
+            }
+        });
+    setupSearchView();
 
         SharedPreferences preferences;
         preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
@@ -98,7 +108,8 @@ public class Balancepolicy_fragment extends Fragment {
                             no_record.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
                         }
-                        recyclerView.setAdapter(new BalancePolicyAdapter(getContext(),policies));
+                        balancepolicyAdapter = new BalancePolicyAdapter(getContext(),policies);
+                        recyclerView.setAdapter(balancepolicyAdapter);
 
 
                     }else {
@@ -144,7 +155,7 @@ public class Balancepolicy_fragment extends Fragment {
     private void filterlist(String newText) {
         List<PolicyClass> filteredList = new ArrayList<>();
         for (PolicyClass policy : policies){
-            if (policy.getCust_name().toLowerCase().contains(newText.toLowerCase())){
+            if (policy.getPolicyNumber().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(policy);
             }
         }

@@ -2,16 +2,20 @@ package com.example.gexemi.Fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,17 +44,32 @@ public class Assignpolicy_fragment extends Fragment {
     List<PolicyClass> policies;
     SearchView searchView;
     AssignpolicyAdapter assignpolicyAdapter;
+    TextView count;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_assignpolicy_fragment, container, false);
 
+        count = view.findViewById(R.id.count);
         TextView no_record = view.findViewById(R.id.no_record);
-        searchView = view.findViewById(R.id.searchview);
-        searchView.clearFocus();
+        searchView = view.findViewById(R.id.searchview1);
+        int id = ((LinearLayout)searchView.getChildAt(0)).getChildAt(0).getId();
+//        int id = searchView.getContext().getResources().getIdentifier("android:id/searchview1", null, null);
+        TextView textView = (TextView) searchView.findViewById(id);
+        textView.setTextColor(getResources().getColor(R.color.white));
         RecyclerView assignrecycler =  view.findViewById(R.id.assign_recyclerview);
         assignrecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         policies =new ArrayList<>();
+
+
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                MenuItemCompat.expandActionView(searchView.);
+                searchView.requestFocus();
+                Log.e("TAG", "onClick: Searchview Calling " );
+            }
+        });
 
         setupSearchView();
         
@@ -97,8 +116,11 @@ public class Assignpolicy_fragment extends Fragment {
                         } else {
                             no_record.setVisibility(View.GONE);
                             assignrecycler.setVisibility(View.VISIBLE);
+                            count.setText("Total Assigned Policies: "+policies.size());
+
                         }
-                        assignrecycler.setAdapter(new AssignpolicyAdapter(getContext(),policies));
+                        assignpolicyAdapter=new AssignpolicyAdapter(getContext(),policies);
+                        assignrecycler.setAdapter(assignpolicyAdapter);
 
                     }else {
                         Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -120,6 +142,7 @@ public class Assignpolicy_fragment extends Fragment {
         });
 
         Volley.newRequestQueue(getContext()).add(objectRequest);
+
 
         return view;
     }

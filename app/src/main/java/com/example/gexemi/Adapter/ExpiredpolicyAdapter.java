@@ -24,6 +24,11 @@ public class ExpiredpolicyAdapter extends RecyclerView.Adapter<ExpiredpolicyAdap
         policylist = policies;
     }
 
+    public void setfilteredList(List<PolicyClass> filteredList){
+        this.policylist = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ExpiredpolicyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

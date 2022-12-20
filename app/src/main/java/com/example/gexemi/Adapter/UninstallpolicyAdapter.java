@@ -24,6 +24,11 @@ public class UninstallpolicyAdapter extends RecyclerView.Adapter<Uninstallpolicy
         policylist = policies;
     }
 
+    public void setfilteredList(List<PolicyClass> filteredList){
+        this.policylist = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public UninstallpolicyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

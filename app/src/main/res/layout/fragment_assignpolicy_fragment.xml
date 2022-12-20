@@ -13,15 +13,30 @@
         android:visibility="gone"
         android:gravity="center"
         android:text="No Records Found.">
-
     </TextView>
 
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:text="Count">
+    </TextView>
+
+
     <SearchView
-        android:id="@+id/searchview"
+        style="@style/CustomSearch"
+        android:id="@+id/searchview1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/et_background"
         android:gravity="center"
+        android:focusable="true"
+        android:iconifiedByDefault="false"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.gexemi.Adapter.AssignpolicyAdapter;
+import com.example.gexemi.Adapter.BalancePolicyAdapter;
 import com.example.gexemi.Adapter.ExpiredpolicyAdapter;
 import com.example.gexemi.Adapter.UninstallpolicyAdapter;
 import com.example.gexemi.PolicyClass;
@@ -36,16 +38,30 @@ import java.util.List;
 public class Expiredpolicy_fragment extends Fragment {
 
     String expiredapi_url = "http://goelectronix.in/api/app/VendorPolicies";
+    SearchView searchView;
+    ExpiredpolicyAdapter expiredpolicyAdapter;
+    List<PolicyClass> policies;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_expiredpolicy_fragment, container, false);
-
+        searchView = view.findViewById(R.id.searchview);
         TextView no_record = view.findViewById(R.id.no_record);
         RecyclerView expiredrecycler =  view.findViewById(R.id.expired_recyclerview);
         expiredrecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<PolicyClass> policies =new ArrayList<>();
+        policies =new ArrayList<>();
+
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                MenuItemCompat.expandActionView(searchView.);
+                searchView.requestFocus();
+                Log.e("TAG", "onClick: Searchview Calling " );
+            }
+        });
+
+        setupSearchView();
 
         SharedPreferences preferences;
         preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
@@ -89,7 +105,8 @@ public class Expiredpolicy_fragment extends Fragment {
                             no_record.setVisibility(View.GONE);
                             expiredrecycler.setVisibility(View.VISIBLE);
                         }
-                        expiredrecycler.setAdapter(new ExpiredpolicyAdapter(getContext(),policies));
+                        expiredpolicyAdapter = new ExpiredpolicyAdapter(getContext(),policies);
+                        expiredrecycler.setAdapter(expiredpolicyAdapter);
 
                     }else {
                         Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -113,5 +130,35 @@ public class Expiredpolicy_fragment extends Fragment {
         Volley.newRequestQueue(getContext()).add(objectRequest);
 
         return view;
+    }
+
+    private void setupSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterlist(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterlist(String newText) {
+        List<PolicyClass> filteredList = new ArrayList<>();
+        for (PolicyClass policy : policies){
+            if (policy.getCust_name().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(policy);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+        }else{
+
+            expiredpolicyAdapter.setfilteredList(filteredList);
+        }
     }
 }
