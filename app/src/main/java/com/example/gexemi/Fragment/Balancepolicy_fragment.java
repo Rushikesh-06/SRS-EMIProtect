@@ -109,7 +109,7 @@ public class Balancepolicy_fragment extends Fragment {
                             no_record.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
                             TextView count = view.findViewById(R.id.count);
-                            count.setText("Total Assigned Policies: "+policies.size());
+                            count.setText("Total Balance Policies: "+policies.size());
 
                         }
                         balancepolicyAdapter = new BalancePolicyAdapter(getContext(),policies);

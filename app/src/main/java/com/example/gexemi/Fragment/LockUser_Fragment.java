@@ -86,6 +86,8 @@ public class LockUser_Fragment extends Fragment {
                         } else {
                             no_record.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
+                            TextView count = view.findViewById(R.id.count);
+                            count.setText("Total Lock Users : "+users.size());
                         }
                         recyclerView.setAdapter(new LockuserAdapter(getContext(),users));
 

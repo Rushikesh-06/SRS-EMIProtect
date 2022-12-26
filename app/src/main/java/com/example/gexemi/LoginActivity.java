@@ -134,8 +134,10 @@ public class LoginActivity extends AppCompatActivity {
 
                         editor.commit();
 
-                        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
 
+                        Intent intent =new Intent(LoginActivity.this, DashboardActivity.class);
+                        startActivity(intent);
+                        finish();
 
                     } else {
                         String error = response.getString("message");

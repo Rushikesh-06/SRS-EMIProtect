@@ -105,7 +105,7 @@ public class Expiredpolicy_fragment extends Fragment {
                             no_record.setVisibility(View.GONE);
                             expiredrecycler.setVisibility(View.VISIBLE);
                             TextView count = view.findViewById(R.id.count);
-                            count.setText("Total Assigned Policies: "+policies.size());
+                            count.setText("Total Expired Policies: "+policies.size());
                         }
                         expiredpolicyAdapter = new ExpiredpolicyAdapter(getContext(),policies);
                         expiredrecycler.setAdapter(expiredpolicyAdapter);

@@ -95,6 +95,8 @@ public class AllUser_Fragment extends Fragment {
                         } else {
                             no_record.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
+                            TextView count = view.findViewById(R.id.count);
+                            count.setText("All User: "+users.size());
                         }
                         recyclerView.setAdapter(new AlluserAdapter(getContext(), users));
 
