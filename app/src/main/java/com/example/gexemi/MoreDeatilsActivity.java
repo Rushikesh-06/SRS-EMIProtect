@@ -2,7 +2,9 @@ package com.example.gexemi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MoreDeatilsActivity extends AppCompatActivity {
@@ -49,6 +52,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
     String serialno;
     ProgressDialog mdialog;
     private String syncapi =  "http://goelectronix.in/api/app/CustomerStatusSync";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,21 +107,97 @@ public class MoreDeatilsActivity extends AppCompatActivity {
         btn_lockuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                useraction(3);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MoreDeatilsActivity.this);
+
+                builder.setTitle("Confirm");
+                builder.setMessage("Are you sure?");
+
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        useraction(3);
+                        // Do nothing but close the dialog
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // Do nothing
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+//                useraction(3);
             }
         });
 
         btn_unlockuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                useraction(4);
+                /*useraction(4);*/
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MoreDeatilsActivity.this);
+
+                builder.setTitle("Confirm");
+                builder.setMessage("Are you sure?");
+
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        useraction(4);
+                        // Do nothing but close the dialog
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // Do nothing
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 
         btn_uninstalluser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                useraction(5);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MoreDeatilsActivity.this);
+
+                builder.setTitle("Confirm");
+                builder.setMessage("Are you sure?");
+
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        useraction(5);
+                        // Do nothing but close the dialog
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // Do nothing
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 
@@ -169,6 +249,7 @@ public class MoreDeatilsActivity extends AppCompatActivity {
 
 
     }
+
 
     private void getCustDetails() {
         JSONObject params = new JSONObject();

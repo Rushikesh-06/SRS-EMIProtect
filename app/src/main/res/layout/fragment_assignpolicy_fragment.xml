@@ -32,6 +32,7 @@
 
 
     <SearchView
+        android:visibility="gone"
         style="@style/CustomSearch"
         android:id="@+id/searchview1"
         android:layout_width="match_parent"

@@ -28,8 +28,10 @@
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/qr_popup.xml" value="0.3203125" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/layout/user_item.xml" value="0.309375" />
         <entry key="..\:/Users/Rushikesh Shingan/AndroidStudioProjects/GexEMI/app/src/main/res/xml/network_security_config.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/drawable/btn_blue.xml" value="0.245" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/drawable/button_blue.xml" value="0.246" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/drawable/dashboarditem.xml" value="0.245" />
+        <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/drawable/et_background.xml" value="0.245" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/drawable/gradientbackground_moredetails.xml" value="0.245" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/drawable/lockbtn.xml" value="0.245" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/drawable/lockstatus.xml" value="0.1555" />
@@ -39,6 +41,7 @@
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/layout/activity_main.xml" value="0.309375" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/layout/activity_more_deatils.xml" value="0.309375" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/layout/activity_my_profile.xml" value="0.309375" />
+        <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/layout/activity_payment.xml" value="0.309375" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/layout/activity_policy.xml" value="0.309375" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/layout/activity_user.xml" value="0.309375" />
         <entry key="..\:/Users/Rushikesh Shingan/StudioProjects/Gex-EMI/app/src/main/res/layout/balancepolicy_item.xml" value="0.30833333333333335" />

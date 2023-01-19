@@ -3,6 +3,7 @@ package com.example.gexemi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,9 +32,10 @@ import java.lang.reflect.Method;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    TextView tv_qr, tv_policy,tv_users, tv_myprofile,dashboard_username,dashboard_vendorID,support;
+    TextView tv_qr, tv_policy,tv_users, tv_myprofile,dashboard_username,dashboard_vendorID;
     Dialog mDialog;
-
+    RelativeLayout support;
+    ImageView IV_companylogo;
     SharedPreferences preferences;
 
     @Override
@@ -40,6 +43,9 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 //Wa.me/919892580308
+
+        preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
+
         getSupportActionBar().setTitle("Goelectronix Technologies Pvt Ltd");
         tv_qr = findViewById(R.id.TV_qr);
         tv_policy = findViewById(R.id.TV_policy);
@@ -47,17 +53,26 @@ public class DashboardActivity extends AppCompatActivity {
         tv_myprofile = findViewById(R.id.TV_myprofile);
         dashboard_username = findViewById(R.id.dashboard_username);
         dashboard_vendorID = findViewById(R.id.dashboard_vendorID);
+        IV_companylogo = findViewById(R.id.IV_companylogo);
         support = findViewById(R.id.support);
+        String vendorcode = preferences.getString("Vendorcode","");
         support.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send/?phone=919892580308&text=*Hii%20Am%20retailer%20need%20support*"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send/?phone=919892580308&text= Hii%20I Am%20retailer%20need%20support,Vendor%20Code : "+vendorcode));
                 startActivity(intent);
             }
         });
         mDialog = new Dialog(this);
 
-        preferences = getSharedPreferences("VendorDetails",MODE_PRIVATE);
+        IV_companylogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this,PaymentActivity.class);
+                startActivity(intent);
+            }
+        });
+
         dashboard_username.setText(preferences.getString("VendorName",""));
         dashboard_vendorID.setText("Vendor Code:"+preferences.getString("Vendorcode",""));
 

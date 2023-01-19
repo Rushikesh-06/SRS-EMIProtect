@@ -29,6 +29,11 @@ public class UninstalluserAdapter extends RecyclerView.Adapter<UninstalluserAdap
         userClassList = users;
     }
 
+    public void setfilteredList(List<UserClass> filteredList){
+        this.userClassList = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public UninstalluserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

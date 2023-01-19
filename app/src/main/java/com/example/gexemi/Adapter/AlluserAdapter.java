@@ -31,6 +31,11 @@ public class AlluserAdapter extends RecyclerView.Adapter<AlluserAdapter.AlluserH
         userClassList = users;
     }
 
+    public void setfilteredList(List<UserClass> filteredList){
+        this.userClassList = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public AlluserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

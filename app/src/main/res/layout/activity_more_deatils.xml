@@ -531,6 +531,7 @@
 
 
     <LinearLayout
+        android:id="@+id/lockunlocklayout"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"

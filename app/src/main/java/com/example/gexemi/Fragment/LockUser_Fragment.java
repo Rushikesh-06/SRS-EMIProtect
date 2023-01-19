@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,9 @@ import java.util.List;
 public class LockUser_Fragment extends Fragment {
 
     String alluser_api = "http://goelectronix.in/api/app/VendorCustomers";
+    SearchView searchView;
+    List<UserClass> Users;
+    LockuserAdapter lockuserAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +48,17 @@ public class LockUser_Fragment extends Fragment {
         RecyclerView recyclerView =  view.findViewById(R.id.lockuser_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         List<UserClass> users =new ArrayList<>();
+
+        searchView = view.findViewById(R.id.searchview);
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                MenuItemCompat.expandActionView(searchView.);
+                searchView.requestFocus();
+                Log.e("TAG", "onClick: Searchview Calling " );
+            }
+        });
+        setupSearchView();
 
         SharedPreferences preferences;
         preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
@@ -77,8 +92,9 @@ public class LockUser_Fragment extends Fragment {
                             String serialno = object.getString("serialNumber");
                             String Cust_status = object.getString("customerStatus");
                             String Date = object.getString("date");
+                            String IMEI = object.getString("imeiNumber");
 
-                            users.add(new UserClass(result_username,result_custid,result_phoneno,serialno,Cust_status,Date));
+                            users.add(new UserClass(result_username, result_custid, result_phoneno, serialno, Cust_status,Date,IMEI));
                         }
                         if (users.size() == 0) {
                             no_record.setVisibility(View.VISIBLE);
@@ -113,5 +129,38 @@ public class LockUser_Fragment extends Fragment {
         Volley.newRequestQueue(getContext()).add(objectRequest);
 
         return view;
+    }
+
+    private void setupSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterlist(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterlist(String newText) {
+        List<UserClass> filteredList = new ArrayList<>();
+        for (UserClass user : Users ){
+            if (user.getUsername().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(user);
+            }else if (user.getPhoneno().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(user);
+            }else if (user.getImei_No().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(user);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+        }else{
+            lockuserAdapter.setfilteredList(filteredList);
+        }
     }
 }

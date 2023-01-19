@@ -29,6 +29,11 @@ public class LockuserAdapter extends RecyclerView.Adapter<LockuserAdapter.Lockus
         userClassList = users;
     }
 
+    public void setfilteredList(List<UserClass> filteredList){
+        this.userClassList = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public LockuserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

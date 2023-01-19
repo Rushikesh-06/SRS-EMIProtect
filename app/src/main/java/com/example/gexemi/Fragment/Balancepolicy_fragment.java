@@ -47,11 +47,11 @@ public class Balancepolicy_fragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_balancepolicy_fragment, container, false);
 
         TextView no_record = view.findViewById(R.id.no_record);
-        searchView = view.findViewById(R.id.searchview);
         RecyclerView recyclerView =  view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         policies =new ArrayList<>();
 
+        searchView = view.findViewById(R.id.searchview);
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +60,7 @@ public class Balancepolicy_fragment extends Fragment {
                 Log.e("TAG", "onClick: Searchview Calling " );
             }
         });
-    setupSearchView();
+        setupSearchView();
 
         SharedPreferences preferences;
         preferences = getContext().getSharedPreferences("VendorDetails", Context.MODE_PRIVATE);
