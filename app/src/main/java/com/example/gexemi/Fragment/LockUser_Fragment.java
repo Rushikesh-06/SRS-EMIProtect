@@ -37,7 +37,7 @@ public class LockUser_Fragment extends Fragment {
 
     String alluser_api = "http://goelectronix.in/api/app/VendorCustomers";
     SearchView searchView;
-    List<UserClass> Users;
+    List<UserClass> users;
     LockuserAdapter lockuserAdapter;
 
     @Override
@@ -105,6 +105,7 @@ public class LockUser_Fragment extends Fragment {
                             TextView count = view.findViewById(R.id.count);
                             count.setText("Total Lock Users : "+users.size());
                         }
+                        lockuserAdapter = new LockuserAdapter(getContext(),users);
                         recyclerView.setAdapter(new LockuserAdapter(getContext(),users));
 
                     }else {
@@ -148,7 +149,7 @@ public class LockUser_Fragment extends Fragment {
 
     private void filterlist(String newText) {
         List<UserClass> filteredList = new ArrayList<>();
-        for (UserClass user : Users ){
+        for (UserClass user : users ){
             if (user.getUsername().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(user);
             }else if (user.getPhoneno().toLowerCase().contains(newText.toLowerCase())){

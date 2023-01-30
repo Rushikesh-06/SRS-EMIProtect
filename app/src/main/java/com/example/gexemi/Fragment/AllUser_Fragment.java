@@ -40,7 +40,7 @@ public class AllUser_Fragment extends Fragment {
 
     String alluser_api = "http://goelectronix.in/api/app/VendorCustomers";
     SearchView searchView;
-    List<UserClass> Users;
+    List<UserClass> users;
     AlluserAdapter alluserAdapter;
 
 
@@ -113,6 +113,7 @@ public class AllUser_Fragment extends Fragment {
                             TextView count = view.findViewById(R.id.count);
                             count.setText("All User: "+users.size());
                         }
+                        alluserAdapter = new AlluserAdapter(getContext(),users);
                         recyclerView.setAdapter(new AlluserAdapter(getContext(), users));
 
                     } else {
@@ -158,7 +159,7 @@ public class AllUser_Fragment extends Fragment {
 
     private void filterlist(String newText) {
         List<UserClass> filteredList = new ArrayList<>();
-        for (UserClass user : Users ){
+        for (UserClass user : users ){
             if (user.getUsername().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(user);
             }else if (user.getPhoneno().toLowerCase().contains(newText.toLowerCase())){

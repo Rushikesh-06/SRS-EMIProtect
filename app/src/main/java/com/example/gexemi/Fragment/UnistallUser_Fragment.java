@@ -41,7 +41,7 @@ public class UnistallUser_Fragment extends Fragment {
 //    TextView moredetails;
 
     SearchView searchView;
-    List<UserClass> Users;
+    List<UserClass> users;
     UninstalluserAdapter uninstalluserAdapter;
 
     @Override
@@ -118,6 +118,7 @@ public class UnistallUser_Fragment extends Fragment {
                             TextView count = view.findViewById(R.id.count);
                             count.setText("Total Uninstall Users: "+users.size());
                         }
+                        uninstalluserAdapter = new UninstalluserAdapter(getContext(),users);
                         recyclerView.setAdapter(new UninstalluserAdapter(getContext(),users));
 
                     }else {
@@ -163,7 +164,7 @@ public class UnistallUser_Fragment extends Fragment {
 
     private void filterlist(String newText) {
         List<UserClass> filteredList = new ArrayList<>();
-        for (UserClass user : Users ){
+        for (UserClass user : users ){
             if (user.getUsername().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(user);
             }else if (user.getPhoneno().toLowerCase().contains(newText.toLowerCase())){
