@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username, password;
     ImageView password_icon;
     Button btn_login;
-    TextView support;
+    TextView support,signup;
     private boolean passwordshowing = false;
     SessionManage session;
 
@@ -48,11 +48,19 @@ public class LoginActivity extends AppCompatActivity {
         password_icon = findViewById(R.id.password_icon);
         btn_login = findViewById(R.id.btn_signin);
         support = findViewById(R.id.support);
+        signup = findViewById(R.id.btn_signup);
         support.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send/?phone=919892580308&text=*Hii%20Am%20retailer%20need%20support*"));
                 startActivity(intent);
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
 

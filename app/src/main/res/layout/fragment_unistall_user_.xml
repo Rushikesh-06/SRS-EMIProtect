@@ -21,6 +21,20 @@
         android:text="Count"/>
 
 
+    <SearchView
+        android:id="@+id/uni_searchview"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/searchviewbg"
+        android:gravity="center"
+        android:focusable="true"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:queryHint="Search in Users..."/>
+
+
     <TextView
         android:id="@+id/no_record"
         android:layout_width="match_parent"

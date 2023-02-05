@@ -1,5 +1,6 @@
 package com.example.gexemi.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,6 +45,7 @@ public class UnistallUser_Fragment extends Fragment {
     List<UserClass> users;
     UninstalluserAdapter uninstalluserAdapter;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,9 +64,9 @@ public class UnistallUser_Fragment extends Fragment {
 
         RecyclerView recyclerView =  view.findViewById(R.id.uninstalluser_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<UserClass> users =new ArrayList<>();
+         users =new ArrayList<>();
 
-        searchView = view.findViewById(R.id.searchview);
+        searchView = view.findViewById(R.id.uni_searchview);
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +121,7 @@ public class UnistallUser_Fragment extends Fragment {
                             count.setText("Total Uninstall Users: "+users.size());
                         }
                         uninstalluserAdapter = new UninstalluserAdapter(getContext(),users);
-                        recyclerView.setAdapter(new UninstalluserAdapter(getContext(),users));
+                        recyclerView.setAdapter(uninstalluserAdapter);
 
                     }else {
                         Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -168,8 +170,6 @@ public class UnistallUser_Fragment extends Fragment {
             if (user.getUsername().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(user);
             }else if (user.getPhoneno().toLowerCase().contains(newText.toLowerCase())){
-                filteredList.add(user);
-            }else if (user.getImei_No().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(user);
             }
         }

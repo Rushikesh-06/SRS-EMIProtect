@@ -173,6 +173,7 @@
         </LinearLayout>
 
         <View
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/black"
@@ -248,7 +249,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/Gpay"
+            android:id="@+id/btn_upipayment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"

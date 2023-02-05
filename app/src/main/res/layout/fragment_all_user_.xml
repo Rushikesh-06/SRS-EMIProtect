@@ -25,7 +25,7 @@
         android:id="@+id/searchview"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/et_background"
+        android:background="@drawable/searchviewbg"
         android:gravity="center"
         android:focusable="true"
         android:iconifiedByDefault="false"

@@ -53,7 +53,7 @@ public class AllUser_Fragment extends Fragment {
         TextView no_record = view.findViewById(R.id.no_record);
         RecyclerView recyclerView = view.findViewById(R.id.alluser_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<UserClass> users = new ArrayList<>();
+        users = new ArrayList<>();
 
         searchView = view.findViewById(R.id.searchview);
         searchView.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +114,7 @@ public class AllUser_Fragment extends Fragment {
                             count.setText("All User: "+users.size());
                         }
                         alluserAdapter = new AlluserAdapter(getContext(),users);
-                        recyclerView.setAdapter(new AlluserAdapter(getContext(), users));
+                        recyclerView.setAdapter(alluserAdapter);
 
                     } else {
                         Toast.makeText(getContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -163,8 +163,6 @@ public class AllUser_Fragment extends Fragment {
             if (user.getUsername().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(user);
             }else if (user.getPhoneno().toLowerCase().contains(newText.toLowerCase())){
-                filteredList.add(user);
-            }else if (user.getImei_No().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(user);
             }
         }
